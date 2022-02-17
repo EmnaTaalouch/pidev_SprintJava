@@ -40,14 +40,17 @@ public class EventService implements IEventService<Event>{
 
     @Override
     public Event afficherEventById(int id) {
+        return null;
     }
 
     @Override
     public List<Event> afficher() {
+        return null;
     }
 
     @Override
     public List<Event> rechercher(String x) {
+        return null;
     }
 
     
