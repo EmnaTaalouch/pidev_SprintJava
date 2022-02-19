@@ -13,13 +13,13 @@ import java.util.List;
  */
 public interface IEventTypeService<T> {
     
-        public void ajouter(T t);
+    public void ajouter(T t);
     
-    public void modifier(T t);
+    public void modifier(T t,int id);
     
     public void supprimer(int id);
     
-    public T afficherEventById(int id);
+    public T afficherEvent_type_ById(int id);
     
     public List<T> afficher();
     

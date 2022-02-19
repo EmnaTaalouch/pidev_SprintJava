@@ -15,7 +15,7 @@ public interface IEventService<T> {
     
     public void ajouter(T t);
     
-    public void modifier(T t);
+    public void modifier(T t,int id);
     
     public void supprimer(int id);
     

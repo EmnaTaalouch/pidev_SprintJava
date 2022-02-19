@@ -9,6 +9,10 @@ package pidev.Entities;
  *
  * @author Emna
  */
-public class Responsable_event {
+public class Responsable_event extends User{
+
+    public Responsable_event() {
+    }
+    
     
 }
