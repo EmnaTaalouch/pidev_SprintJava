@@ -27,7 +27,7 @@ public class Pidev {
         User uu = new User("imen","taalouch","imen.taalouch@esprit.tn","123","responsable");
         Event_type et2 = new Event_type("hackaton");
         Event_type et3 = new Event_type("anniversaire");
-        Event event1 = new Event("event one", "event description", "evmenot theme", new Date(2022-02-01), new Date(2022-02-01), "pending", u, uu, et2);
+        Event event1 = new Event("event one", "event description", "evmenot theme", new Date(2022-02-01), new Date(2022-02-01), EventStatusEnum.EventPending.toString(), u, uu, et2);
         //et2.setLibelle("curie");
         Event_type et4 = new Event_type("emna");
         ets.modifier(et4,2);
