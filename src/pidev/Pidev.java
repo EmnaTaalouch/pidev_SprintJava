@@ -35,6 +35,22 @@ public class Pidev {
         
         
         
+        UserCRUD ucd = new UserCRUD();
+     //   User u = new User("imen","mettichi","manouu","rr777","admin");
+        User u1 = new User("malek","boughanmi","malek.boughanmi@esprit.tn","kk455","responsable");
+        User u2 = new User("mariem","mannai","mariem.mannai@esprit.tn","ff888","responsable");
+        ucd.ajouterUser(u);
+        ucd.ajouterUser(u1);
+     //   ucd.ajouterUser(u2);
+        ucd.supprimerUser(21); 
+        ucd.modifierUser(u, 2);
+        System.out.println(ucd.usersList());
+        
+        
+        
+        
+        
+        
         
         
          
