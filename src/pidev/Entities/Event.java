@@ -35,6 +35,20 @@ public class Event {
         this.id_type = id_type;
     }
 
+    public Event(int id, String nom_event, String event_description, String event_theme, Date date_debut, Date date_fin, String event_status, User id_client, User id_responsable, Event_type id_type) {
+        this.id = id;
+        this.nom_event = nom_event;
+        this.event_description = event_description;
+        this.event_theme = event_theme;
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.event_status = event_status;
+        this.id_client = id_client;
+        this.id_responsable = id_responsable;
+        this.id_type = id_type;
+    }
+    
+
     public Event() {
     }
 

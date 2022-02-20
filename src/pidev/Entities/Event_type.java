@@ -18,6 +18,11 @@ public class Event_type {
         this.libelle = libelle;
     }
 
+    public Event_type(int id, String libelle) {
+        this.id = id;
+        this.libelle = libelle;
+    }
+
     public Event_type() {
     }
 

@@ -9,6 +9,11 @@ package pidev.Entities;
  *
  * @author Emna
  */
-public class Client {
-    
+public class Client extends User {
+
+    public Client() {
+    }
+ 
 }
+
+
