@@ -16,15 +16,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author Emna
  */
-public class AjouterEventResponsableController implements Initializable {
+public class ReserverEventClientController implements Initializable {
 
     @FXML
     private TextField fieldNom;
@@ -37,19 +35,15 @@ public class AjouterEventResponsableController implements Initializable {
     @FXML
     private TextArea fieldDescription;
     @FXML
-    private Button ajouter;
+    private Button reserver;
     @FXML
     private DatePicker fieldDateD;
     @FXML
     private DatePicker fieldDateF;
     @FXML
-    private ComboBox<?> fieldClient;
-    @FXML
     private ComboBox<?> fieldType;
     @FXML
     private CheckBox fieldStatus;
-    @FXML
-    private AnchorPane anchorpane;
 
     /**
      * Initializes the controller class.
@@ -60,10 +54,7 @@ public class AjouterEventResponsableController implements Initializable {
     }    
 
     @FXML
-    private void OnAjout(ActionEvent event) {
-        
-        Stage stage = (Stage) anchorpane.getScene().getWindow();
-        stage.close();
+    private void OnReserve(ActionEvent event) {
     }
     
 }
