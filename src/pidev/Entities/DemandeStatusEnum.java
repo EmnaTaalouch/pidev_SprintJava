@@ -9,7 +9,8 @@ package pidev.Entities;
  *
  * @author Emna
  */
-public enum EventStatusEnum {
-    Public,
-    Private
+public enum DemandeStatusEnum {
+    DemandePending,
+    DemandeAccepted,
+    DemandeRefused
 }

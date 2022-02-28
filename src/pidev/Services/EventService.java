@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import pidev.Entities.Event;
 import pidev.Entities.Event_type;
-import pidev.Entities.EventStatusEnum;
+import pidev.Entities.DemandeStatusEnum;
 import pidev.Entities.User;
 import pidev.Utils.Database;
 /**
@@ -33,7 +33,7 @@ public class EventService implements IEventService<Event>{
 
     @Override
     public void ajouter(Event t) {
-           String req = "Insert into event (nom_event,event_description,event_theme,date_debut,date_fin,event_status,id_client,id_responsable,id_type)  values (?,?,?,?,?,?,?,?,?)";
+           String req = "Insert into event (nom_event,event_description,event_theme,date_debut,date_fin,event_status,demande_status,id_client,id_responsable,id_type,nbr_participants,lieu)  values (?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             pst = cnx.prepareStatement(req);
             pst.setString(1, t.getNom_event());
@@ -41,10 +41,13 @@ public class EventService implements IEventService<Event>{
             pst.setString(3, t.getEvent_theme());
             pst.setDate(4, t.getDate_debut());
             pst.setDate(5, t.getDate_fin());
-            pst.setString(6, EventStatusEnum.EventPending.toString());
-            pst.setInt(7, t.getId_client().getId());
-            pst.setInt(8, t.getId_responsable().getId());
-            pst.setInt(9, t.getId_type().getId());
+            pst.setString(6, t.getEvent_status());
+            pst.setString(7, DemandeStatusEnum.DemandePending.toString());
+            pst.setInt(8, t.getId_client().getId());
+            pst.setInt(9, t.getId_responsable().getId());
+            pst.setInt(10, t.getId_type().getId());
+            pst.setInt(11, t.getNbr_participants());
+            pst.setString(12, t.getLieu());
             
             pst.executeUpdate();
         } 
@@ -55,7 +58,7 @@ public class EventService implements IEventService<Event>{
 
     @Override
     public void modifier(Event t,int id) {
-        String req = "update event set nom_event =?,event_description =?,event_theme =?,date_debut =?,date_fin =?,id_type =? where id =? ";
+        String req = "update event set nom_event =?,event_description =?,event_theme =?,date_debut =?,date_fin =?,id_type =?,nbr_participants=?,lieu=? where id =? ";
         try {
             pst = cnx.prepareStatement(req);
             pst.setString(1, t.getNom_event());
@@ -64,7 +67,9 @@ public class EventService implements IEventService<Event>{
             pst.setDate(4, t.getDate_debut());
             pst.setDate(5, t.getDate_fin());
             pst.setInt(6, t.getId_type().getId());
-            pst.setInt(7, id);
+            pst.setInt(7, t.getNbr_participants());
+            pst.setString(8, t.getLieu());
+            pst.setInt(9, id);
             pst.executeUpdate();
             
         } 
@@ -98,7 +103,22 @@ public class EventService implements IEventService<Event>{
                User client = new User(rs.getInt("u.id"),rs.getString("u.nom"),rs.getString("u.prenom"),rs.getString("u.login"),rs.getString("u.password"),rs.getString("u.role")); 
                User responsable = new User(rs.getInt("uu.id"),rs.getString("uu.nom"),rs.getString("uu.prenom"),rs.getString("uu.login"),rs.getString("uu.password"),rs.getString("uu.role"));
                 Event_type et = new Event_type(rs.getInt("et.id"),rs.getString("et.libelle"));
-                e=new Event(rs.getInt(1), rs.getString(2) , rs.getString(3) , rs.getString(4) , rs.getDate(5) , rs.getDate(6) , rs.getString(7) , client ,responsable, et);
+                e= new Event();
+                e.setId(rs.getInt("e.id"));
+                e.setNom_event(rs.getString("e.nom_event"));
+                e.setEvent_description(rs.getString("e.event_description"));
+                e.setEvent_theme(rs.getString("e.event_theme"));
+                e.setDate_debut(rs.getDate("e.date_debut"));
+                e.setDate_fin(rs.getDate("e.date_fin"));
+                e.setEvent_status(rs.getString("e.event_status"));
+                e.setDemande_status(rs.getString("e.demande_status"));
+                e.setId_client(client);
+                e.setId_responsable(responsable);
+                e.setId_type(et);
+                e.setNbr_participants(rs.getInt("e.nbr_participants"));
+                e.setLieu(rs.getString("e.lieu"));
+               
+                
             }
         }  
         catch (SQLException ex) {
@@ -116,9 +136,23 @@ public class EventService implements IEventService<Event>{
             rs = ste.executeQuery(req);
             while (rs.next()) {
                 User client = new User(rs.getInt("u.id"),rs.getString("u.nom"),rs.getString("u.prenom"),rs.getString("u.login"),rs.getString("u.password"),rs.getString("u.role")); 
-               User responsable = new User(rs.getInt("uu.id"),rs.getString("uu.nom"),rs.getString("uu.prenom"),rs.getString("uu.login"),rs.getString("uu.password"),rs.getString("uu.role"));
+                User responsable = new User(rs.getInt("uu.id"),rs.getString("uu.nom"),rs.getString("uu.prenom"),rs.getString("uu.login"),rs.getString("uu.password"),rs.getString("uu.role"));
                 Event_type et = new Event_type(rs.getInt("et.id"),rs.getString("et.libelle"));
-                list_event.add(new Event(rs.getInt(1), rs.getString(2) , rs.getString(3) , rs.getString(4) , rs.getDate(5) , rs.getDate(6) , rs.getString(7) , client ,responsable, et));
+                Event e= new Event();
+                e.setId(rs.getInt("e.id"));
+                e.setNom_event(rs.getString("e.nom_event"));
+                e.setEvent_description(rs.getString("e.event_description"));
+                e.setEvent_theme(rs.getString("e.event_theme"));
+                e.setDate_debut(rs.getDate("e.date_debut"));
+                e.setDate_fin(rs.getDate("e.date_fin"));
+                e.setEvent_status(rs.getString("e.event_status"));
+                e.setDemande_status(rs.getString("e.demande_status"));
+                e.setId_client(client);
+                e.setId_responsable(responsable);
+                e.setId_type(et);
+                e.setNbr_participants(rs.getInt("e.nbr_participants"));
+                e.setLieu(rs.getString("e.lieu"));
+                list_event.add(e);
             }
         }  
         catch (SQLException ex) {
@@ -138,8 +172,21 @@ public class EventService implements IEventService<Event>{
                 User client = new User(rs.getInt("u.id"),rs.getString("u.nom"),rs.getString("u.prenom"),rs.getString("u.login"),rs.getString("u.password"),rs.getString("u.role")); 
                User responsable = new User(rs.getInt("uu.id"),rs.getString("uu.nom"),rs.getString("uu.prenom"),rs.getString("uu.login"),rs.getString("uu.password"),rs.getString("uu.role"));
                 Event_type et = new Event_type(rs.getInt("et.id"),rs.getString("et.libelle"));
-                list_event.add(new Event(rs.getInt(1), rs.getString(2) , rs.getString(3) , rs.getString(4) , rs.getDate(5) , rs.getDate(6) , rs.getString(7) , client ,responsable, et));
-           }
+                Event e= new Event();
+                e.setId(rs.getInt("e.id"));
+                e.setNom_event(rs.getString("e.nom_event"));
+                e.setEvent_description(rs.getString("e.event_description"));
+                e.setEvent_theme(rs.getString("e.event_theme"));
+                e.setDate_debut(rs.getDate("e.date_debut"));
+                e.setDate_fin(rs.getDate("e.date_fin"));
+                e.setEvent_status(rs.getString("e.event_status"));
+                e.setDemande_status(rs.getString("e.demande_status"));
+                e.setId_client(client);
+                e.setId_responsable(responsable);
+                e.setId_type(et);
+                e.setNbr_participants(rs.getInt("e.nbr_participants"));
+                e.setLieu(rs.getString("e.lieu"));
+                list_event.add(e);           }
         }  
         catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -149,7 +196,7 @@ public class EventService implements IEventService<Event>{
 
     @Override
     public void reserverEvent(Event t) {
-           String req = "Insert into event (nom_event,event_description,event_theme,date_debut,date_fin,event_status,id_client,id_type)  values (?,?,?,?,?,?,?,?)";
+           String req = "Insert into event (nom_event,event_description,event_theme,date_debut,date_fin,event_status,demande_status,id_client,id_type)  values (?,?,?,?,?,?,?,?,?)";
         try {
             pst = cnx.prepareStatement(req);
             pst.setString(1, t.getNom_event());
@@ -157,25 +204,27 @@ public class EventService implements IEventService<Event>{
             pst.setString(3, t.getEvent_theme());
             pst.setDate(4, t.getDate_debut());
             pst.setDate(5, t.getDate_fin());
-            pst.setString(6, EventStatusEnum.EventPending.toString());
-            pst.setInt(7, t.getId_client().getId());
-            pst.setInt(8, t.getId_type().getId());
+            pst.setString(6, t.getEvent_status());
+            pst.setString(7, DemandeStatusEnum.DemandePending.toString());
+            pst.setInt(8, t.getId_client().getId());
+            pst.setInt(10, t.getId_type().getId());
             
             pst.executeUpdate();
         } 
         catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }  
+        }
     }
 
     @Override
-    public void accepterRefuserEvent(String status,int id) {
-           // status : Accepted or Refused
-                String req = "update event set event_status =? where id =? ";
+    public void accepterRefuserEvent(String status,int id_responsable,int id) {
+           // demande_status : Accepted or Refused
+                String req = "update event set demande_status =?,id_responsable=? where id =? ";
         try {
             pst = cnx.prepareStatement(req);
             pst.setString(1, status);
-            pst.setInt(2, id);
+            pst.setInt(2, id_responsable);
+            pst.setInt(3, id);
             pst.executeUpdate();
             
         } 
@@ -194,7 +243,20 @@ public class EventService implements IEventService<Event>{
             while (rs.next()) {    
                User responsable = new User(rs.getInt("uu.id"),rs.getString("uu.nom"),rs.getString("uu.prenom"),rs.getString("uu.login"),rs.getString("uu.password"),rs.getString("uu.role"));
                 Event_type et = new Event_type(rs.getInt("et.id"),rs.getString("et.libelle"));
-                list_event.add(new Event(rs.getInt(1), rs.getString(2) , rs.getString(3) , rs.getString(4) , rs.getDate(5) , rs.getDate(6) , rs.getString(7)  ,responsable, et));
+               Event e= new Event();
+                e.setId(rs.getInt("e.id"));
+                e.setNom_event(rs.getString("e.nom_event"));
+                e.setEvent_description(rs.getString("e.event_description"));
+                e.setEvent_theme(rs.getString("e.event_theme"));
+                e.setDate_debut(rs.getDate("e.date_debut"));
+                e.setDate_fin(rs.getDate("e.date_fin"));
+                e.setEvent_status(rs.getString("e.event_status"));
+                e.setDemande_status(rs.getString("e.demande_status"));
+                e.setId_responsable(responsable);
+                e.setId_type(et);
+                e.setNbr_participants(rs.getInt("e.nbr_participants"));
+                e.setLieu(rs.getString("e.lieu"));
+                list_event.add(e);
             }
         }  
         catch (SQLException ex) {
@@ -213,7 +275,20 @@ public class EventService implements IEventService<Event>{
             while (rs.next()) {
                 User client = new User(rs.getInt("u.id"),rs.getString("u.nom"),rs.getString("u.prenom"),rs.getString("u.login"),rs.getString("u.password"),rs.getString("u.role")); 
                 Event_type et = new Event_type(rs.getInt("et.id"),rs.getString("et.libelle"));
-                list_event.add(new Event(rs.getInt(1), rs.getString(2) , rs.getString(3) , rs.getString(4) , rs.getDate(5) , rs.getDate(6) , rs.getString(7) , client , et));
+                Event e= new Event();
+                e.setId(rs.getInt("e.id"));
+                e.setNom_event(rs.getString("e.nom_event"));
+                e.setEvent_description(rs.getString("e.event_description"));
+                e.setEvent_theme(rs.getString("e.event_theme"));
+                e.setDate_debut(rs.getDate("e.date_debut"));
+                e.setDate_fin(rs.getDate("e.date_fin"));
+                e.setEvent_status(rs.getString("e.event_status"));
+                e.setDemande_status(rs.getString("e.demande_status"));
+                e.setId_client(client);
+                e.setId_type(et);
+                e.setNbr_participants(rs.getInt("e.nbr_participants"));
+                e.setLieu(rs.getString("e.lieu"));
+                list_event.add(e);
             }
         }  
         catch (SQLException ex) {

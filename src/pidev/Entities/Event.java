@@ -19,47 +19,16 @@ public class Event {
     private Date date_debut;
     private Date date_fin;
     private String event_status;
+    private String demande_status;
     private User id_client;
     private User id_responsable;
     private Event_type id_type;
-
-    public Event(String nom_event, String event_description, String event_theme, Date date_debut, Date date_fin, String event_status, User id_client, User id_responsable, Event_type id_type) {
-        this.nom_event = nom_event;
-        this.event_description = event_description;
-        this.event_theme = event_theme;
-        this.date_debut = date_debut;
-        this.date_fin = date_fin;
-        this.event_status = event_status;
-        this.id_client = id_client;
-        this.id_responsable = id_responsable;
-        this.id_type = id_type;
-    }
-
-    public Event(int id, String nom_event, String event_description, String event_theme, Date date_debut, Date date_fin, String event_status, User id_client, User id_responsable, Event_type id_type) {
-        this.id = id;
-        this.nom_event = nom_event;
-        this.event_description = event_description;
-        this.event_theme = event_theme;
-        this.date_debut = date_debut;
-        this.date_fin = date_fin;
-        this.event_status = event_status;
-        this.id_client = id_client;
-        this.id_responsable = id_responsable;
-        this.id_type = id_type;
-    }
-    public Event(int id, String nom_event, String event_description, String event_theme, Date date_debut, Date date_fin, String event_status, User id_client, Event_type id_type) {
-        this.id = id;
-        this.nom_event = nom_event;
-        this.event_description = event_description;
-        this.event_theme = event_theme;
-        this.date_debut = date_debut;
-        this.date_fin = date_fin;
-        this.event_status = event_status;
-        this.id_client = id_client;
-        
-        this.id_type = id_type;
-    }
+    private int nbr_participants;
+    private String lieu;
     
+    
+
+
 
     public Event() {
     }
@@ -144,10 +113,40 @@ public class Event {
         this.id_type = id_type;
     }
 
+    public String getDemande_status() {
+        return demande_status;
+    }
+
+    public void setDemande_status(String demande_status) {
+        this.demande_status = demande_status;
+    }
+
+    public int getNbr_participants() {
+        return nbr_participants;
+    }
+
+    public void setNbr_participants(int nbr_participants) {
+        this.nbr_participants = nbr_participants;
+    }
+
+    public String getLieu() {
+        return lieu;
+    }
+
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
+    }
+
     @Override
     public String toString() {
-        return "Event{" + "id=" + id + ", nom_event=" + nom_event + ", event_description=" + event_description + ", event_theme=" + event_theme + ", date_debut=" + date_debut + ", date_fin=" + date_fin + ", event_status=" + event_status + ", id_client=" + id_client + ", id_responsable=" + id_responsable + ", id_type=" + id_type + '}';
+        return "Event{" + "id=" + id + ", nom_event=" + nom_event + ", event_description=" + event_description + ", event_theme=" + event_theme + ", date_debut=" + date_debut + ", date_fin=" + date_fin + ", event_status=" + event_status + ", demande_status=" + demande_status + ", id_client=" + id_client + ", id_responsable=" + id_responsable + ", id_type=" + id_type + ", nbr_participants=" + nbr_participants + ", lieu=" + lieu + '}';
     }
     
+    
+    
+    
+
+    
+
    
 }

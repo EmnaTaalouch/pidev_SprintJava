@@ -19,7 +19,7 @@ public interface IEventService<T> {
     
     public void modifier(T t,int id);
     
-    public void accepterRefuserEvent(String status,int id);
+    public void accepterRefuserEvent(String status,int id_responsable,int id);
     
     public void supprimer(int id);
     
