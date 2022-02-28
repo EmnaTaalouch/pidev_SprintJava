@@ -65,5 +65,10 @@ public class ResponsableInterfaceController implements Initializable {
     private void AfficherListeEvents(MouseEvent event) {
         afficher("ListeEvenements.fxml");
     }
+
+    @FXML
+    private void AfficherTypeEvents(MouseEvent event) {
+        afficher("ListeTypeEvent.fxml");
+    }
     
 }

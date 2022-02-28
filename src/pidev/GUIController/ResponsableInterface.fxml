@@ -29,16 +29,31 @@
                                     <Font size="20.0" />
                                  </font>
                               </Text>
-                              <Text onMouseClicked="#AfficherDemandesEvents" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste de demandes" textAlignment="CENTER" wrappingWidth="226.13671875">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <Text onMouseClicked="#AfficherListeEvents" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Evenements" textAlignment="CENTER" wrappingWidth="228.13671875">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
+                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                                 <children>
+                                    <Text onMouseClicked="#AfficherDemandesEvents" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste de demandes" wrappingWidth="226.13671875">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Text>
+                                    <Text onMouseClicked="#AfficherListeEvents" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Evenements" wrappingWidth="228.13671875">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text onMouseClicked="#AfficherTypeEvents" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste de Type Evenements">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="25.0" />
+                                 </VBox.margin>
+                              </VBox>
                            </children>
                            <padding>
                               <Insets bottom="15.0" />
@@ -46,10 +61,9 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="42.0" prefWidth="281.0">
+                  <HBox alignment="CENTER" prefHeight="42.0" prefWidth="281.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="74.0" style="-fx-background-color: none;" />
-                        <Text onMouseClicked="#AfficherGestionUtilisateur" strokeType="INSIDE" strokeWidth="0.0" text="Gestion Utilisateur" textOrigin="CENTER" wrappingWidth="226.13671875" x="555.0" y="555.0">
+                        <Text onMouseClicked="#AfficherGestionUtilisateur" strokeType="INSIDE" strokeWidth="0.0" text="Gestion Utilisateur" textOrigin="CENTER" wrappingWidth="237.13671875" x="555.0" y="555.0">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -57,7 +71,11 @@
                               <Insets />
                            </HBox.margin>
                         </Text>
+                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="74.0" style="-fx-background-color: none;" />
                      </children>
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>
