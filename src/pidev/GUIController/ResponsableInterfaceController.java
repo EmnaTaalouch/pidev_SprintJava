@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -28,12 +29,18 @@ public class ResponsableInterfaceController implements Initializable {
     private AnchorPane responsableinterface;
     @FXML
     private AnchorPane anchorcenter;
+    @FXML
+    private VBox vboxmainevent;
+    @FXML
+    private VBox vboxanimevent;
+    Boolean actionevent = false;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        vboxmainevent.getChildren().remove(vboxanimevent);
         
     }    
     
@@ -69,6 +76,18 @@ public class ResponsableInterfaceController implements Initializable {
     @FXML
     private void AfficherTypeEvents(MouseEvent event) {
         afficher("ListeTypeEvent.fxml");
+    }
+
+    @FXML
+    private void onanimateevent(MouseEvent event) {
+        if (!actionevent) {
+            vboxmainevent.getChildren().add(vboxanimevent);
+            actionevent=true;
+        }
+        else {
+            vboxmainevent.getChildren().remove(vboxanimevent);
+            actionevent=false;
+        }
     }
     
 }

@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="662.0" prefWidth="835.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="pidev.GUIController.AjouterEventResponsableController">
+<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="662.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.AjouterEventResponsableController">
    <children>
       <TextField fx:id="fieldNom" layoutX="195.0" layoutY="36.0" prefHeight="25.0" prefWidth="151.0" />
       <Text layoutX="42.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom evenement :" />
@@ -32,6 +31,6 @@
       <DatePicker fx:id="fieldDateF" layoutX="196.0" layoutY="163.0" prefHeight="25.0" prefWidth="151.0" />
       <ComboBox fx:id="fieldClient" layoutX="196.0" layoutY="209.0" prefWidth="150.0" />
       <ComboBox fx:id="fieldType" layoutX="578.0" layoutY="34.0" prefWidth="150.0" />
-      <CheckBox fx:id="fieldStatus" layoutX="578.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" text="Public" />
+      <CheckBox fx:id="fieldStatus" layoutX="578.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" text="Publique" />
    </children>
 </AnchorPane>

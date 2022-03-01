@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="605.0" prefWidth="1076.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.HistoriqueEventController">
+   <children>
+      <TableView fx:id="tablehistorique" layoutX="46.0" layoutY="129.0" prefHeight="331.0" prefWidth="990.0">
+        <columns>
+          <TableColumn fx:id="nomfield" prefWidth="157.0" text="Nom Evenement" />
+          <TableColumn fx:id="themefield" prefWidth="142.0" text="Theme Evenement" />
+            <TableColumn fx:id="typefield" prefWidth="174.0" text="Type Evenement" />
+            <TableColumn fx:id="datedfield" prefWidth="157.0" text="Date Debut" />
+            <TableColumn fx:id="dateffield" prefWidth="155.0" text="Date Fin" />
+            <TableColumn fx:id="lieufield" prefWidth="204.0" text="Lieu" />
+        </columns>
+      </TableView>
+      <TextField fx:id="searchfield" layoutX="132.0" layoutY="81.0" prefHeight="29.0" prefWidth="266.0" promptText="Search..." />
+      <ComboBox fx:id="demandefield" layoutX="886.0" layoutY="83.0" prefWidth="150.0" promptText="Demande Status" />
+      <Button fx:id="btnreserver" layoutX="874.0" layoutY="497.0" mnemonicParsing="false" onAction="#onReserverAction" prefHeight="46.0" prefWidth="162.0" style="-fx-background-color: green;" text="Reserver Evenement" />
+   </children>
+</AnchorPane>

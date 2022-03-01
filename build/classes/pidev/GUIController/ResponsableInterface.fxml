@@ -22,14 +22,14 @@
                   <HBox prefHeight="50.0" prefWidth="281.0">
                      <children>
                         <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="74.0" style="-fx-background-color: none;" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="13.0">
+                        <VBox fx:id="vboxmainevent" prefHeight="200.0" prefWidth="100.0" spacing="13.0">
                            <children>
-                              <Text strokeType="INSIDE" strokeWidth="0.0" text="Gestion Evenement" textOrigin="CENTER" wrappingWidth="226.13671875" x="555.0" y="555.0">
+                              <Text onMouseClicked="#onanimateevent" strokeType="INSIDE" strokeWidth="0.0" text="Gestion Evenement" textOrigin="CENTER" wrappingWidth="226.13671875" x="555.0" y="555.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Text>
-                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                              <VBox fx:id="vboxanimevent" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
                                     <Text onMouseClicked="#AfficherDemandesEvents" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste de demandes" wrappingWidth="226.13671875">
                                        <font>

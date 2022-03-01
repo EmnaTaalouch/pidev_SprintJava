@@ -7,6 +7,8 @@ package pidev.GUIController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,6 +59,7 @@ public class AjouterEventResponsableController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        algo();
     }    
 
     @FXML
@@ -64,6 +67,20 @@ public class AjouterEventResponsableController implements Initializable {
         
         Stage stage = (Stage) anchorpane.getScene().getWindow();
         stage.close();
+    }
+    
+    void algo() {
+        fieldStatus.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(newValue) {
+                    fieldStatus.setText("Privé");
+                }
+                else {
+                    fieldStatus.setText("Publique");
+                }
+            }
+        });
     }
     
 }
