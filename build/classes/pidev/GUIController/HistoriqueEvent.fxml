@@ -19,8 +19,9 @@
             <TableColumn fx:id="lieufield" prefWidth="204.0" text="Lieu" />
         </columns>
       </TableView>
-      <TextField fx:id="searchfield" layoutX="132.0" layoutY="81.0" prefHeight="29.0" prefWidth="266.0" promptText="Search..." />
+      <TextField fx:id="searchfield" layoutX="132.0" layoutY="81.0" prefHeight="29.0" prefWidth="266.0" promptText="chercher . ." />
       <ComboBox fx:id="demandefield" layoutX="886.0" layoutY="83.0" prefWidth="150.0" promptText="Demande Status" />
       <Button fx:id="btnreserver" layoutX="874.0" layoutY="497.0" mnemonicParsing="false" onAction="#onReserverAction" prefHeight="46.0" prefWidth="162.0" style="-fx-background-color: green;" text="Reserver Evenement" />
+      <Button fx:id="btn" layoutX="699.0" layoutY="497.0" mnemonicParsing="false" onAction="#onActualiserAction" prefHeight="46.0" prefWidth="162.0" style="-fx-background-color: grey;" text="Actualiser" />
    </children>
 </AnchorPane>

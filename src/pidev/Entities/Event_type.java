@@ -44,7 +44,7 @@ public class Event_type {
 
     @Override
     public String toString() {
-        return "Event_type{" + "id=" + id + ", libelle=" + libelle + '}';
+        return this.libelle;
     }
     
     

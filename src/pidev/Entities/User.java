@@ -89,7 +89,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password=" + password + ", role=" + role + '}';
+        return this.nom+" "+this.prenom;
     }
     
     

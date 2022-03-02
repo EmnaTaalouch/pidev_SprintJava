@@ -6,6 +6,7 @@
 package pidev.GUIController;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,6 +21,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import pidev.Entities.Event;
+import pidev.Entities.EventStatusEnum;
+import pidev.Entities.Event_type;
+import pidev.Entities.User;
+import pidev.Services.EventService;
+import pidev.Services.EventTypeService;
 
 /**
  * FXML Controller class
@@ -45,13 +52,17 @@ public class AjouterEventResponsableController implements Initializable {
     @FXML
     private DatePicker fieldDateF;
     @FXML
-    private ComboBox<?> fieldClient;
+    private ComboBox<User> fieldClient;
     @FXML
-    private ComboBox<?> fieldType;
+    private ComboBox<Event_type> fieldType;
     @FXML
     private CheckBox fieldStatus;
     @FXML
     private AnchorPane anchorpane;
+    
+    EventService es = new EventService();
+    EventTypeService ets = new EventTypeService();
+    
 
     /**
      * Initializes the controller class.
@@ -59,14 +70,34 @@ public class AjouterEventResponsableController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        fieldClient.getItems().setAll(es.afficherclient());
+        fieldType.getItems().setAll(ets.afficher());
         algo();
     }    
 
     @FXML
     private void OnAjout(ActionEvent event) {
-        
+        Event t = new Event();
+        t.setNom_event(fieldNom.getText());
+        t.setEvent_theme(fieldTheme.getText());
+        t.setNbr_participants(Integer.valueOf(fieldNbr.getText()));
+        t.setLieu(fieldLieu.getText());
+        t.setEvent_description(fieldDescription.getText());
+        t.setDate_debut(Date.valueOf(fieldDateD.getValue()));
+        t.setDate_fin(Date.valueOf(fieldDateF.getValue()));
+        if(fieldStatus.getText().equals("Privé"))
+            t.setEvent_status(EventStatusEnum.Privé.toString());
+        else
+            t.setEvent_status(EventStatusEnum.Publique.toString());
+        System.out.println(fieldClient.getSelectionModel().getSelectedItem());
+        t.setId_client(fieldClient.getSelectionModel().getSelectedItem());
+        t.setId_type(fieldType.getSelectionModel().getSelectedItem());
+        User responsable = new User(2,"bb","bb","bb","bb","responsable");
+        t.setId_responsable(responsable);
+        es.ajouter(t);
         Stage stage = (Stage) anchorpane.getScene().getWindow();
         stage.close();
+        
     }
     
     void algo() {

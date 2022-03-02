@@ -6,6 +6,7 @@
 package pidev.GUIController;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,6 +21,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import pidev.Entities.Event;
+import pidev.Entities.EventStatusEnum;
+import pidev.Entities.Event_type;
+import pidev.Entities.User;
+import pidev.Services.EventService;
 
 /**
  * FXML Controller class
@@ -43,7 +50,7 @@ public class ReserverEventClientController implements Initializable {
     @FXML
     private DatePicker fieldDateF;
     @FXML
-    private ComboBox<?> fieldType;
+    private ComboBox<Event_type> fieldType;
     @FXML
     private AnchorPane anchorpane;
     @FXML
@@ -52,6 +59,8 @@ public class ReserverEventClientController implements Initializable {
     private RadioButton btnprivé;
     @FXML
     private RadioButton btnpublic;
+    
+    EventService es = new EventService();
 
     /**
      * Initializes the controller class.
@@ -64,8 +73,29 @@ public class ReserverEventClientController implements Initializable {
         algo();
     }    
 
+    
+    
     @FXML
     private void OnReserve(ActionEvent event) {
+         Event t = new Event();
+        t.setNom_event(fieldNom.getText());
+        t.setEvent_theme(fieldTheme.getText());
+        t.setNbr_participants(Integer.valueOf(fieldNbr.getText()));
+        t.setLieu(fieldLieu.getText());
+        t.setEvent_description(fieldDescription.getText());
+        t.setDate_debut(Date.valueOf(fieldDateD.getValue()));
+        t.setDate_fin(Date.valueOf(fieldDateF.getValue()));
+        if(btnprivé.isSelected() && !btnpublic.isSelected())
+            t.setEvent_status(EventStatusEnum.Privé.toString());
+        else
+            t.setEvent_status(EventStatusEnum.Publique.toString());
+        User client = new User();
+        client.setId(1);
+        t.setId_client(client);
+        t.setId_type(fieldType.getSelectionModel().getSelectedItem());
+        es.reserverEvent(t);
+        Stage stage = (Stage) anchorpane.getScene().getWindow();
+        stage.close();
     }
     
     void algo() {

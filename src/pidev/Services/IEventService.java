@@ -17,6 +17,8 @@ public interface IEventService<T> {
     
     public void reserverEvent(T t);
     
+    public void modifierreservation(T t,int id);
+    
     public void modifier(T t,int id);
     
     public void accepterRefuserEvent(String status,int id_responsable,int id);
@@ -29,7 +31,7 @@ public interface IEventService<T> {
     
     public List<T> rechercher(String x);
     
-    public List<T> historiqueEventbyClient(int id_client);
+    public List<T> historiqueEventbyClientetStatus(int id_client,String x);
     
     public List<T> afficherEventbyResponsable(int id_responsable);
     

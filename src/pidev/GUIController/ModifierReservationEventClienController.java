@@ -16,6 +16,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import pidev.Entities.Event;
+import pidev.Entities.Event_type;
 
 /**
  * FXML Controller class
@@ -39,7 +42,7 @@ public class ModifierReservationEventClienController implements Initializable {
     @FXML
     private DatePicker fieldDateF;
     @FXML
-    private ComboBox<?> fieldType;
+    private ComboBox<Event_type> fieldType;
     @FXML
     private RadioButton btnprivé;
     @FXML
@@ -48,6 +51,10 @@ public class ModifierReservationEventClienController implements Initializable {
     private Button btnmodif;
     @FXML
     private Button btnsupp;
+    @FXML
+    private Text label;
+    
+    HistoriqueEventController lec;
 
     /**
      * Initializes the controller class.
@@ -55,7 +62,24 @@ public class ModifierReservationEventClienController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }  
+    
+     void setMainController(HistoriqueEventController l) {
+        lec= l;
+    }
+    void setData(Event t) {
+        
+        label.setText(String.valueOf(t.getId()));
+        fieldNom.setText(t.getNom_event());
+        fieldTheme.setText(t.getEvent_theme());
+        fieldNbr.setText(String.valueOf(t.getNbr_participants()));
+        fieldLieu.setText(t.getLieu());
+        fieldDescription.setText(t.getEvent_description());
+        fieldDateD.setValue(t.getDate_debut().toLocalDate());
+        fieldDateF.setValue(t.getDate_fin().toLocalDate());
+        fieldType.setValue(t.getId_type());
+        
+    }
 
     @FXML
     private void OnModifier(ActionEvent event) {

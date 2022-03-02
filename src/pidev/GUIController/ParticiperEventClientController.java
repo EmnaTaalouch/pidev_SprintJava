@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -34,6 +36,8 @@ public class ParticiperEventClientController implements Initializable {
 
     @FXML
     private VBox paneevent;
+    @FXML
+    private AnchorPane anchor;
 
 
 
@@ -42,11 +46,17 @@ public class ParticiperEventClientController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ScrollPane sp = new ScrollPane();
+        sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         for (int i = 0; i < 2; i++) {
-            Text diver = new Text(" \n --------------------------------------------------------------------------------------------------------------------------------------------------------------- \n");
+            Text diver = new Text(" \n ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- \n");
             paneevent.getChildren().add(cardTemplate("mochi party","brd","theme","hammamet","2/2/22","3/2/22","2"));
             paneevent.getChildren().add(diver);
+            
         }
+        sp.setContent(paneevent); 
+        anchor.getChildren().add(sp);
         
     }    
     
@@ -76,7 +86,7 @@ public class ParticiperEventClientController implements Initializable {
             themeEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20));
             Text lieuEvent = new Text("Lieu Event : "+stringlieu);
             lieuEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20));
-            Text dateEvent = new Text("De  "+stringdated+"   a    "+stringdatef);
+            Text dateEvent = new Text("De   "+stringdated+"   Jusqu'à   "+stringdatef);
             dateEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20));
             Text nbrPartEvent = new Text("Participants : "+stringparticipant);
             nbrPartEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20));

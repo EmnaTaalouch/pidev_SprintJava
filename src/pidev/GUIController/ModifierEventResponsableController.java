@@ -6,6 +6,8 @@
 package pidev.GUIController;
 
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,6 +21,14 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import pidev.Entities.Event;
+import pidev.Entities.EventStatusEnum;
+import pidev.Entities.Event_type;
+import pidev.Entities.User;
+import pidev.Services.EventService;
+import pidev.Services.EventTypeService;
 
 /**
  * FXML Controller class
@@ -44,15 +54,22 @@ public class ModifierEventResponsableController implements Initializable {
     @FXML
     private DatePicker fieldDateF;
     @FXML
-    private ComboBox<?> fieldClient;
+    private ComboBox<User> fieldClient;
     @FXML
-    private ComboBox<?> fieldType;
+    private ComboBox<Event_type> fieldType;
     @FXML
     private CheckBox fieldStatus;
     @FXML
     private Button Supprimer;
     @FXML
     private AnchorPane pane;
+    
+    ListeEvenementsController lec;
+    @FXML
+    private Text label;
+    
+    EventService es = new EventService();
+    EventTypeService ets = new EventTypeService();
 
     /**
      * Initializes the controller class.
@@ -61,14 +78,57 @@ public class ModifierEventResponsableController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         algo();
+        label.setVisible(false);
+        fieldType.getItems().addAll(ets.afficher());
+        fieldClient.getItems().addAll(es.afficherclient());
     }    
+    
+    void setMainController(ListeEvenementsController l) {
+        lec= l;
+    }
+    void setData(Event t) {
+        
+        label.setText(String.valueOf(t.getId()));
+        fieldNom.setText(t.getNom_event());
+        fieldTheme.setText(t.getEvent_theme());
+        fieldNbr.setText(String.valueOf(t.getNbr_participants()));
+        fieldLieu.setText(t.getLieu());
+        fieldDescription.setText(t.getEvent_description());
+        fieldDateD.setValue(t.getDate_debut().toLocalDate());
+        fieldDateF.setValue(t.getDate_fin().toLocalDate());
+        fieldClient.setValue(t.getId_client());
+        fieldType.setValue(t.getId_type());
+        
+    }
 
     @FXML
     private void OnModifier(ActionEvent event) {
+           Event t = new Event();
+        t.setNom_event(fieldNom.getText());
+        t.setEvent_theme(fieldTheme.getText());
+        t.setNbr_participants(Integer.valueOf(fieldNbr.getText()));
+        t.setLieu(fieldLieu.getText());
+        t.setEvent_description(fieldDescription.getText());
+        t.setDate_debut(Date.valueOf(fieldDateD.getValue()));
+        t.setDate_fin(Date.valueOf(fieldDateF.getValue()));
+        if(fieldStatus.getText().equals("Privé"))
+            t.setEvent_status(EventStatusEnum.Privé.toString());
+        else
+            t.setEvent_status(EventStatusEnum.Publique.toString());
+        t.setId_client(fieldClient.getSelectionModel().getSelectedItem());
+        t.setId_type(fieldType.getSelectionModel().getSelectedItem());
+        User responsable = new User(2,"bb","bb","bb","bb","responsable");
+        t.setId_responsable(responsable);
+        es.modifier(t,Integer.valueOf(label.getText()));
+         Stage stage = (Stage) pane.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     private void OnSupprimer(ActionEvent event) {
+        es.supprimer(Integer.valueOf(label.getText()));
+        Stage stage = (Stage) pane.getScene().getWindow();
+        stage.close();
     }
     
     

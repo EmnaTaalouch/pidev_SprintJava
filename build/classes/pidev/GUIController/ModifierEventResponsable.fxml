@@ -33,5 +33,6 @@
       <ComboBox fx:id="fieldType" layoutX="588.0" layoutY="44.0" prefWidth="150.0" />
       <CheckBox fx:id="fieldStatus" layoutX="588.0" layoutY="172.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" text="Publique" />
       <Button fx:id="Supprimer" layoutX="624.0" layoutY="538.0" mnemonicParsing="false" onAction="#OnSupprimer" prefHeight="41.0" prefWidth="104.0" style="-fx-background-color: red;" text="Supprimer" />
+      <Text fx:id="label" layoutX="156.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="75.13671875" />
    </children>
 </AnchorPane>

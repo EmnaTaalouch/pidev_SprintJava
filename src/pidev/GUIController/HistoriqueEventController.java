@@ -7,8 +7,10 @@ package pidev.GUIController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,9 +20,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import pidev.Entities.DemandeStatusEnum;
+import pidev.Entities.Event;
+import pidev.Entities.Event_type;
+import pidev.Services.EventService;
 
 /**
  * FXML Controller class
@@ -32,25 +39,29 @@ public class HistoriqueEventController implements Initializable {
     @FXML
     private AnchorPane anchorPane;
     @FXML
-    private TableView<?> tablehistorique;
+    private TableView<Event> tablehistorique;
     @FXML
-    private TableColumn<?, ?> nomfield;
+    private TableColumn<Event, String> nomfield;
     @FXML
-    private TableColumn<?, ?> themefield;
+    private TableColumn<Event, String> themefield;
     @FXML
-    private TableColumn<?, ?> typefield;
+    private TableColumn<Event, Event_type> typefield;
     @FXML
-    private TableColumn<?, ?> datedfield;
+    private TableColumn<Event, String> datedfield;
     @FXML
-    private TableColumn<?, ?> dateffield;
+    private TableColumn<Event, String> dateffield;
     @FXML
-    private TableColumn<?, ?> lieufield;
+    private TableColumn<Event, String> lieufield;
     @FXML
     private TextField searchfield;
     @FXML
-    private ComboBox<?> demandefield;
+    private ComboBox<String> demandefield;
     @FXML
     private Button btnreserver;
+    
+    EventService es = new EventService();
+    @FXML
+    private Button btn;
 
     /**
      * Initializes the controller class.
@@ -58,6 +69,22 @@ public class HistoriqueEventController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        nomfield.setCellValueFactory(new PropertyValueFactory<>("nom_event"));
+        themefield.setCellValueFactory(new PropertyValueFactory<>("event_theme"));
+        typefield.setCellValueFactory(new PropertyValueFactory<>("id_type"));
+        datedfield.setCellValueFactory(new PropertyValueFactory<>("date_debut"));
+        dateffield.setCellValueFactory(new PropertyValueFactory<>("date_fin"));
+        lieufield.setCellValueFactory(new PropertyValueFactory<>("lieu"));
+        tablehistorique.getItems().setAll(es.historiqueEventbyClientetStatus(1,DemandeStatusEnum.DemandePending.toString()));
+        ArrayList e = new ArrayList();
+        e.add(DemandeStatusEnum.DemandePending.toString());
+        e.add(DemandeStatusEnum.DemandeAccepted.toString());
+        e.add(DemandeStatusEnum.DemandeRefused.toString());
+        demandefield.getItems().setAll(e);
+        demandefield.getSelectionModel().selectFirst();;
+        OnSelectStatus();
+        chercher();
+        
     }    
 
     @FXML
@@ -74,6 +101,26 @@ public class HistoriqueEventController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    void OnSelectStatus() {
+        demandefield.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                tablehistorique.getItems().setAll(es.historiqueEventbyClientetStatus(1,demandefield.getValue()));
+            }
+        });
+    }
+    
+    void chercher() {
+        searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            tablehistorique.getItems().setAll(es.rechercheEventbyClientetStatus(1,demandefield.getValue(),newValue));
+        });
+    }
+
+    @FXML
+    private void onActualiserAction(ActionEvent event) {
+        tablehistorique.getItems().setAll(es.historiqueEventbyClientetStatus(1,demandefield.getValue()));
     }
     
 }
