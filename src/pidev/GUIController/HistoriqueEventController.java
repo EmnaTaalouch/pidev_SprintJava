@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -84,6 +85,7 @@ public class HistoriqueEventController implements Initializable {
         demandefield.getSelectionModel().selectFirst();;
         OnSelectStatus();
         chercher();
+        popupModifierInterface();
         
     }    
 
@@ -121,6 +123,39 @@ public class HistoriqueEventController implements Initializable {
     @FXML
     private void onActualiserAction(ActionEvent event) {
         tablehistorique.getItems().setAll(es.historiqueEventbyClientetStatus(1,demandefield.getValue()));
+    }
+    
+    
+    
+        void popupModifierInterface() {
+        
+        
+        tablehistorique.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Event t = tablehistorique.getSelectionModel().getSelectedItem();
+                if(t.getDemande_status().equals(DemandeStatusEnum.DemandePending.toString()))
+                ModifInterface(t);
+            }
+        });   
+    }
+    
+    void ModifInterface(Event t) {
+          try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("ModifierReservationEventClien.fxml"));
+            AnchorPane rootLayout = (AnchorPane) loader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            ModifierReservationEventClienController mrc = loader.getController();
+            mrc.setMainController(this);
+            mrc.setData(t);
+            Scene scene = new Scene(rootLayout);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
 }

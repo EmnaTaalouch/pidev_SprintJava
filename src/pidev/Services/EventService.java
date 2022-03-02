@@ -55,6 +55,47 @@ public class EventService implements IEventService<Event>{
             System.out.println(ex.getMessage());
         }
     }
+    
+    
+        public void participer(int id_user,int id_event) {
+           String req = "Insert into event_user (id_user,id_event)  values (?,?)";
+        try {
+            pst = cnx.prepareStatement(req);
+            pst.setInt(1, id_user);
+            pst.setInt(2, id_event);
+            pst.executeUpdate();
+        } 
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+        public void decremente(int id) {
+           String req = "update event set nbr_participants=nbr_participants-1 where id =?";
+        try {
+            pst = cnx.prepareStatement(req);
+            pst.setInt(1, id);
+            pst.executeUpdate();
+        } 
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+        
+        public Boolean verifier(int id_user,int id_event) {
+                   String req = "select count(*) as same from event_user where id_user="+id_user+" and id_event="+id_event;
+        try {
+            ste = cnx.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {
+                if(rs.getInt(1)>0)
+                    return false;
+            }
+        }  
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return true; 
+        }
 
     @Override
     public void modifier(Event t,int id) {
@@ -195,6 +236,39 @@ public class EventService implements IEventService<Event>{
         }
         return list_event;
     }
+    
+    public List<Event> afficherpublicevenement() {
+        String req = "select e.*,et.*,u.*,uu.* from event as e join event_type as et on e.id_type=et.id  join user as u on e.id_client=u.id join user as  uu on e.id_responsable=uu.id where e.demande_status='DemandeAccepted' and e.event_status='Publique'  ";
+        List<Event> list_event = new ArrayList<>();
+        try {
+            ste = cnx.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {
+                User client = new User(rs.getInt("u.id"),rs.getString("u.nom"),rs.getString("u.prenom"),rs.getString("u.login"),rs.getString("u.password"),rs.getString("u.role")); 
+                User responsable = new User(rs.getInt("uu.id"),rs.getString("uu.nom"),rs.getString("uu.prenom"),rs.getString("uu.login"),rs.getString("uu.password"),rs.getString("uu.role"));
+                Event_type et = new Event_type(rs.getInt("et.id"),rs.getString("et.libelle"));
+                Event e= new Event();
+                e.setId(rs.getInt("e.id"));
+                e.setNom_event(rs.getString("e.nom_event"));
+                e.setEvent_description(rs.getString("e.event_description"));
+                e.setEvent_theme(rs.getString("e.event_theme"));
+                e.setDate_debut(rs.getDate("e.date_debut"));
+                e.setDate_fin(rs.getDate("e.date_fin"));
+                e.setEvent_status(rs.getString("e.event_status"));
+                e.setDemande_status(rs.getString("e.demande_status"));
+                e.setId_client(client);
+                e.setId_responsable(responsable);
+                e.setId_type(et);
+                e.setNbr_participants(rs.getInt("e.nbr_participants"));
+                e.setLieu(rs.getString("e.lieu"));
+                list_event.add(e);
+            }
+        }  
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list_event;
+    }
 
     @Override
     public List<Event> rechercher(String x) {
@@ -262,7 +336,7 @@ public class EventService implements IEventService<Event>{
 
     @Override
     public void reserverEvent(Event t) {
-           String req = "Insert into event (nom_event,event_description,event_theme,date_debut,date_fin,event_status,demande_status,id_client,id_type)  values (?,?,?,?,?,?,?,?,?)";
+           String req = "Insert into event (nom_event,event_description,event_theme,date_debut,date_fin,event_status,demande_status,id_client,id_type,nbr_participants,lieu)  values (?,?,?,?,?,?,?,?,?,?,?)";
         try {
             pst = cnx.prepareStatement(req);
             pst.setString(1, t.getNom_event());
@@ -273,7 +347,9 @@ public class EventService implements IEventService<Event>{
             pst.setString(6, t.getEvent_status());
             pst.setString(7, DemandeStatusEnum.DemandePending.toString());
             pst.setInt(8, t.getId_client().getId());
-            pst.setInt(10, t.getId_type().getId());
+            pst.setInt(9, t.getId_type().getId());
+            pst.setInt(10, t.getNbr_participants());
+            pst.setString(11, t.getLieu());
             
             pst.executeUpdate();
         } 
@@ -323,13 +399,13 @@ public class EventService implements IEventService<Event>{
 
     @Override
     public List<Event> historiqueEventbyClientetStatus(int id_client,String x) {
-                String req = "select e.*,et.*,uu.* from event as e join event_type as et on e.id_type=et.id join user as  uu on e.id_responsable=uu.id where e.id_client ='"+id_client+"' and e.demande_status ='"+x+"' ";
+                String req = "select e.*,et.* from event as e join event_type as et on e.id_type=et.id  where e.id_client ='"+id_client+"' and e.demande_status ='"+x+"' ";
         List<Event> list_event = new ArrayList<>();
         try {
             ste = cnx.createStatement();
             rs = ste.executeQuery(req);
             while (rs.next()) {    
-               User responsable = new User(rs.getInt("uu.id"),rs.getString("uu.nom"),rs.getString("uu.prenom"),rs.getString("uu.login"),rs.getString("uu.password"),rs.getString("uu.role"));
+               
                 Event_type et = new Event_type(rs.getInt("et.id"),rs.getString("et.libelle"));
                Event e= new Event();
                 e.setId(rs.getInt("e.id"));
@@ -340,7 +416,6 @@ public class EventService implements IEventService<Event>{
                 e.setDate_fin(rs.getDate("e.date_fin"));
                 e.setEvent_status(rs.getString("e.event_status"));
                 e.setDemande_status(rs.getString("e.demande_status"));
-                e.setId_responsable(responsable);
                 e.setId_type(et);
                 e.setNbr_participants(rs.getInt("e.nbr_participants"));
                 e.setLieu(rs.getString("e.lieu"));
@@ -353,13 +428,12 @@ public class EventService implements IEventService<Event>{
         return list_event;
     }
     public List<Event> rechercheEventbyClientetStatus(int id_client,String x,String search) {
-                String req = "select e.*,et.*,uu.* from event as e join event_type as et on e.id_type=et.id join user as  uu on e.id_responsable=uu.id where e.id_client ='"+id_client+"' and e.demande_status ='"+x+"' and (e.nom_event like '%"+search+"%' or e.event_theme like '%"+search+"%') ";
+                String req = "select e.*,et.* from event as e join event_type as et on e.id_type=et.id  where e.id_client ='"+id_client+"' and e.demande_status ='"+x+"' and (e.nom_event like '%"+search+"%' or e.event_theme like '%"+search+"%') ";
         List<Event> list_event = new ArrayList<>();
         try {
             ste = cnx.createStatement();
             rs = ste.executeQuery(req);
             while (rs.next()) {    
-               User responsable = new User(rs.getInt("uu.id"),rs.getString("uu.nom"),rs.getString("uu.prenom"),rs.getString("uu.login"),rs.getString("uu.password"),rs.getString("uu.role"));
                 Event_type et = new Event_type(rs.getInt("et.id"),rs.getString("et.libelle"));
                Event e= new Event();
                 e.setId(rs.getInt("e.id"));
@@ -370,7 +444,6 @@ public class EventService implements IEventService<Event>{
                 e.setDate_fin(rs.getDate("e.date_fin"));
                 e.setEvent_status(rs.getString("e.event_status"));
                 e.setDemande_status(rs.getString("e.demande_status"));
-                e.setId_responsable(responsable);
                 e.setId_type(et);
                 e.setNbr_participants(rs.getInt("e.nbr_participants"));
                 e.setLieu(rs.getString("e.lieu"));

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="662.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ModifierReservationEventClienController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="662.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ModifierReservationEventClienController">
    <children>
       <TextField fx:id="fieldNom" layoutX="62.0" layoutY="54.0" prefHeight="25.0" prefWidth="231.0" promptText="Nom evenement" />
       <TextField fx:id="fieldTheme" layoutX="62.0" layoutY="107.0" prefHeight="25.0" prefWidth="231.0" promptText="theme evenement" />

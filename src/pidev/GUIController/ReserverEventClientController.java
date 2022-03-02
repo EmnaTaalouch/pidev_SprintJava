@@ -27,6 +27,7 @@ import pidev.Entities.EventStatusEnum;
 import pidev.Entities.Event_type;
 import pidev.Entities.User;
 import pidev.Services.EventService;
+import pidev.Services.EventTypeService;
 
 /**
  * FXML Controller class
@@ -61,6 +62,7 @@ public class ReserverEventClientController implements Initializable {
     private RadioButton btnpublic;
     
     EventService es = new EventService();
+    EventTypeService ets = new EventTypeService();
 
     /**
      * Initializes the controller class.
@@ -70,6 +72,7 @@ public class ReserverEventClientController implements Initializable {
         // TODO
         btnprivé.setSelected(true);
         btnpublic.setSelected(false);
+        fieldType.getItems().setAll(ets.afficher());
         algo();
     }    
 
