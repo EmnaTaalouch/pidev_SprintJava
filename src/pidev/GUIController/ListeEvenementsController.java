@@ -101,8 +101,10 @@ public class ListeEvenementsController implements Initializable {
         tabevent.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                if(tabevent.getSelectionModel().getSelectedItem()!=null) {
                 Event t = tabevent.getSelectionModel().getSelectedItem();
                 ModifInterface(t);
+                }
             }
         });   
     }

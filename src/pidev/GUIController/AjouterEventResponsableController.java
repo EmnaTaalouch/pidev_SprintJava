@@ -13,6 +13,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -73,10 +74,49 @@ public class AjouterEventResponsableController implements Initializable {
         fieldClient.getItems().setAll(es.afficherclient());
         fieldType.getItems().setAll(ets.afficher());
         algo();
-    }    
+    }   
+    
+    
+    public void afficherAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Alerte");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.show();
+    }
+
+    public boolean testSaisie() {
+        if (
+                fieldType.getValue() == null
+                || fieldClient.getValue() == null
+                || fieldDateD.getValue() == null
+                || fieldDateF.getValue() == null
+                || fieldNom.getText().trim().isEmpty()
+                || fieldTheme.getText().trim().isEmpty()
+                || fieldNbr.getText().trim().isEmpty()
+                || fieldLieu.getText().trim().isEmpty()
+                || fieldDescription.getText().trim().isEmpty()
+                ) {
+            afficherAlert("Tous les champs doivent être remplis");
+            return false;
+        }
+
+        if (fieldDateD.getValue().compareTo(fieldDateF.getValue()) > 0) {
+            afficherAlert("Date fin doit être supérieur ou égal à la date de debut");
+            return false;
+        }
+        try {
+            Double num = Double.parseDouble(fieldNbr.getText());
+        } catch (NumberFormatException e) {
+            afficherAlert("Champs Nombre Participants invalide doit etre un nombre");
+            return false;
+        }
+        return true;
+    }
 
     @FXML
     private void OnAjout(ActionEvent event) {
+        if(testSaisie()) {
         Event t = new Event();
         t.setNom_event(fieldNom.getText());
         t.setEvent_theme(fieldTheme.getText());
@@ -92,11 +132,15 @@ public class AjouterEventResponsableController implements Initializable {
         System.out.println(fieldClient.getSelectionModel().getSelectedItem());
         t.setId_client(fieldClient.getSelectionModel().getSelectedItem());
         t.setId_type(fieldType.getSelectionModel().getSelectedItem());
-        User responsable = new User(2,"bb","bb","bb","bb","responsable");
+        User responsable = new User();
+        responsable.setId(2);
         t.setId_responsable(responsable);
+        
         es.ajouter(t);
         Stage stage = (Stage) anchorpane.getScene().getWindow();
-        stage.close();
+        stage.close(); 
+        }
+       
         
     }
     

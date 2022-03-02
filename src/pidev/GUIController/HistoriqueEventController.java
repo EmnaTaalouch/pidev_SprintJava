@@ -133,9 +133,11 @@ public class HistoriqueEventController implements Initializable {
         tablehistorique.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                if(tablehistorique.getSelectionModel().getSelectedItem()!=null) {
                 Event t = tablehistorique.getSelectionModel().getSelectedItem();
                 if(t.getDemande_status().equals(DemandeStatusEnum.DemandePending.toString()))
                 ModifInterface(t);
+                }
             }
         });   
     }
