@@ -8,21 +8,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ListeTypeEventController">
+<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="1000.0" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ListeTypeEventController">
    <children>
       <TableView fx:id="tab" layoutX="78.0" layoutY="89.0" prefHeight="286.0" prefWidth="263.0">
         <columns>
-          <TableColumn fx:id="col" prefWidth="262.0" text="Libelle" />
+          <TableColumn fx:id="col" prefWidth="262.3999969482422" text="Libelle" />
         </columns>
       </TableView>
-      <TextField fx:id="fieldLibelle" layoutX="600.0" layoutY="159.0" prefHeight="38.0" prefWidth="177.0" promptText="Libelle..." />
+      <TextField fx:id="fieldLibelle" layoutX="600.0" layoutY="159.0" prefHeight="38.0" prefWidth="177.0" promptText="Libelle..." styleClass="textfield" />
       <Text layoutX="500.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle :" wrappingWidth="84.13671875">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Button fx:id="ajouter" layoutX="668.0" layoutY="241.0" mnemonicParsing="false" onAction="#onAjout" prefHeight="38.0" prefWidth="109.0" style="-fx-background-color: green;" text="Ajouter" />
-      <Button fx:id="supprimer" layoutX="668.0" layoutY="241.0" mnemonicParsing="false" onAction="#OnSupprime" prefHeight="38.0" prefWidth="109.0" style="-fx-background-color: red;" text="Supprimer" />
-      <Button fx:id="modifier" layoutX="542.0" layoutY="241.0" mnemonicParsing="false" onAction="#Onmodife" prefHeight="38.0" prefWidth="109.0" style="-fx-background-color: yellow;" text="Modifier" />
+      <Button fx:id="ajouter" layoutX="668.0" layoutY="241.0" mnemonicParsing="false" onAction="#onAjout" prefHeight="38.0" prefWidth="109.0" styleClass="addbtn" text="Ajouter" />
+      <Button fx:id="supprimer" layoutX="668.0" layoutY="241.0" mnemonicParsing="false" onAction="#OnSupprime" prefHeight="38.0" prefWidth="109.0" styleClass="deletebtn" text="Supprimer" />
+      <Button fx:id="modifier" layoutX="542.0" layoutY="241.0" mnemonicParsing="false" onAction="#Onmodife" prefHeight="38.0" prefWidth="109.0" styleClass="updatebtn" text="Modifier" />
    </children>
 </AnchorPane>

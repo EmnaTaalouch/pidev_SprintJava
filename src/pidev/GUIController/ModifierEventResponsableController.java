@@ -137,8 +137,7 @@ public class ModifierEventResponsableController implements Initializable {
         fieldDateD.setValue(t.getDate_debut().toLocalDate());
         fieldDateF.setValue(t.getDate_fin().toLocalDate());
         fieldClient.setValue(t.getId_client());
-        fieldType.setValue(t.getId_type());
-        
+        fieldType.setValue(t.getId_type());   
     }
 
     @FXML

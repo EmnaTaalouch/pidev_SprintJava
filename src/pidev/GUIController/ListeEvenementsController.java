@@ -5,6 +5,8 @@
  */
 package pidev.GUIController;
 
+import com.itextpdf.text.DocumentException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -52,6 +54,8 @@ public class ListeEvenementsController implements Initializable {
     EventService es = new EventService();
     @FXML
     private TextField searchfield;
+    @FXML
+    private AnchorPane pane;
 
     /**
      * Initializes the controller class.
@@ -131,6 +135,11 @@ public class ListeEvenementsController implements Initializable {
         searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
             tabevent.getItems().setAll(es.rechercher(newValue));
         });
+    }
+
+    @FXML
+    private void ExportPdf(ActionEvent event) throws FileNotFoundException, DocumentException {
+        es.exportpdf(es.afficher(),pane);
     }
     
 }

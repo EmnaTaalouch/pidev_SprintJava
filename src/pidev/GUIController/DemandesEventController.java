@@ -50,7 +50,7 @@ public class DemandesEventController implements Initializable {
     private TableColumn<Event, String> coldatef;
     @FXML
     private TableColumn<Event, String> colstatus;
-    
+
     EventService es = new EventService();
     @FXML
     private TextField searchfield;
@@ -61,7 +61,7 @@ public class DemandesEventController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-                colnom.setCellValueFactory(new PropertyValueFactory<>("nom_event"));
+        colnom.setCellValueFactory(new PropertyValueFactory<>("nom_event"));
         coltype.setCellValueFactory(new PropertyValueFactory<>("id_type"));
         colclient.setCellValueFactory(new PropertyValueFactory<>("id_client"));
         coldated.setCellValueFactory(new PropertyValueFactory<>("date_debut"));
@@ -69,58 +69,37 @@ public class DemandesEventController implements Initializable {
         colstatus.setCellValueFactory(new PropertyValueFactory<>("event_status"));
         tabdem.getItems().setAll(es.afficherevenementbydemandestatus(DemandeStatusEnum.DemandePending.toString()));
         chercher();
-    }    
+    }
 
     @FXML
     private void OnAccepterEvent(ActionEvent event) throws MessagingException {
-        if(tabdem.getSelectionModel().getSelectedItem()!=null) {
-        Event t = tabdem.getSelectionModel().getSelectedItem();
-        User responsable = new User(2,"bb","bb","bb","bb","responsable");
-        es.accepterRefuserEvent(DemandeStatusEnum.DemandeAccepted.toString(), responsable.getId(), t.getId());
-        sendmail("emna.taalouch@esprit.tn","Acceptation de l'event","votre demande a l evenement " + t.getNom_event() + " a ete acceptée");
-        tabdem.getItems().setAll(es.afficherevenementbydemandestatus(DemandeStatusEnum.DemandePending.toString()));
+        if (tabdem.getSelectionModel().getSelectedItem() != null) {
+            Event t = tabdem.getSelectionModel().getSelectedItem();
+            User responsable = new User();
+            responsable.setId(2);
+            es.accepterRefuserEvent(DemandeStatusEnum.DemandeAccepted.toString(), responsable.getId(), t.getId());
+            es.sendmail("emna.taalouch@esprit.tn", "Acceptation de l'event", "votre demande a l evenement " + t.getNom_event() + " a ete acceptée");
+            tabdem.getItems().setAll(es.afficherevenementbydemandestatus(DemandeStatusEnum.DemandePending.toString()));
         }
     }
 
     @FXML
     private void OnRefuserEvent(ActionEvent event) throws MessagingException {
-        if(tabdem.getSelectionModel().getSelectedItem()!=null) {
-        Event t = tabdem.getSelectionModel().getSelectedItem();
-        User responsable = new User(2,"bb","bb","bb","bb","responsable");
-        es.accepterRefuserEvent(DemandeStatusEnum.DemandeRefused.toString(), responsable.getId(), t.getId());
-        sendmail("emna.taalouch@esprit.tn","Acceptation de l'event","votre demande a l evenement " + t.getNom_event() + " a ete refusée");
-        tabdem.getItems().setAll(es.afficherevenementbydemandestatus(DemandeStatusEnum.DemandePending.toString()));
+        if (tabdem.getSelectionModel().getSelectedItem() != null) {
+            Event t = tabdem.getSelectionModel().getSelectedItem();
+            User responsable = new User();
+            responsable.setId(2);
+            es.accepterRefuserEvent(DemandeStatusEnum.DemandeRefused.toString(), responsable.getId(), t.getId());
+            es.sendmail("emna.taalouch@esprit.tn", "Acceptation de l'event", "votre demande a l evenement " + t.getNom_event() + " a ete refusée");
+            tabdem.getItems().setAll(es.afficherevenementbydemandestatus(DemandeStatusEnum.DemandePending.toString()));
         }
-        
+
     }
-    
+
     void chercher() {
         searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
             tabdem.getItems().setAll(es.rechercherstatuspending(newValue));
         });
     }
-    
-    void sendmail(String recepient,String subj,String desc) throws AddressException, MessagingException {
-        Properties prop = new Properties();
-        prop.put("mail.smtp.auth","true");
-        prop.put("mail.smtp.starttls.enable","true");
-        prop.put("mail.smtp.host","smtp.gmail.com");
-        prop.put("mail.smtp.port","587"); 
-        String from ="eventplanningesprit@gmail.com";
-        String mdp = "Faithoverfear*1";
-        Session session = Session.getInstance(prop,new Authenticator() {
-            @Override
-            protected  PasswordAuthentication getPasswordAuthentication(){
-                return new PasswordAuthentication(from, mdp);
-              }
-            });
-        Message message= new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
-            message.setRecipient(Message.RecipientType.TO,new InternetAddress(recepient));
-            message.setSubject(subj);
-            message.setText(desc);
-        Transport.send(message);
-        System.out.println("send ok");
-    }
-    
+
 }

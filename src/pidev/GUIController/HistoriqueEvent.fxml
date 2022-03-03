@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="605.0" prefWidth="1076.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.HistoriqueEventController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="605.0" prefWidth="1076.0" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.HistoriqueEventController">
    <children>
       <TableView fx:id="tablehistorique" layoutX="46.0" layoutY="129.0" prefHeight="331.0" prefWidth="990.0">
         <columns>
@@ -21,7 +21,7 @@
       </TableView>
       <TextField fx:id="searchfield" layoutX="132.0" layoutY="81.0" prefHeight="29.0" prefWidth="266.0" promptText="chercher . ." />
       <ComboBox fx:id="demandefield" layoutX="886.0" layoutY="83.0" prefWidth="150.0" promptText="Demande Status" />
-      <Button fx:id="btnreserver" layoutX="874.0" layoutY="497.0" mnemonicParsing="false" onAction="#onReserverAction" prefHeight="46.0" prefWidth="162.0" style="-fx-background-color: green;" text="Reserver Evenement" />
-      <Button fx:id="btn" layoutX="699.0" layoutY="497.0" mnemonicParsing="false" onAction="#onActualiserAction" prefHeight="46.0" prefWidth="162.0" style="-fx-background-color: grey;" text="Actualiser" />
+      <Button fx:id="btnreserver" layoutX="909.0" layoutY="497.0" mnemonicParsing="false" onAction="#onReserverAction" prefHeight="38.0" prefWidth="127.0" styleClass="addbtn" text="Reserver Evenement" />
+      <Button fx:id="btn" layoutX="758.0" layoutY="497.0" mnemonicParsing="false" onAction="#onActualiserAction" prefHeight="38.0" prefWidth="127.0" styleClass="refreshbtn" text="Actualiser" />
    </children>
 </AnchorPane>

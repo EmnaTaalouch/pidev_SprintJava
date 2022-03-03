@@ -9,28 +9,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="662.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.AjouterEventResponsableController">
+<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="662.0" prefWidth="835.0" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.AjouterEventResponsableController">
    <children>
-      <TextField fx:id="fieldNom" layoutX="195.0" layoutY="36.0" prefHeight="25.0" prefWidth="151.0" />
+      <TextField fx:id="fieldNom" layoutX="195.0" layoutY="36.0" prefHeight="25.0" prefWidth="151.0" styleClass="textfield" />
       <Text layoutX="42.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom evenement :" />
       <Text layoutX="421.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type : " />
-      <TextField fx:id="fieldTheme" layoutX="195.0" layoutY="76.0" prefHeight="25.0" prefWidth="151.0" />
+      <TextField fx:id="fieldTheme" layoutX="195.0" layoutY="76.0" prefHeight="25.0" prefWidth="151.0" styleClass="textfield" />
       <Text layoutX="42.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thème evenement :" />
-      <TextField fx:id="fieldNbr" layoutX="578.0" layoutY="74.0" />
+      <TextField fx:id="fieldNbr" layoutX="578.0" layoutY="74.0" styleClass="textfield" />
       <Text layoutX="416.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nombre de participants :" />
       <Text layoutX="42.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date début :" />
-      <TextField fx:id="fieldLieu" layoutX="578.0" layoutY="113.0" />
+      <TextField fx:id="fieldLieu" layoutX="578.0" layoutY="113.0" styleClass="textfield" />
       <Text layoutX="421.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu :" />
       <Text layoutX="42.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date fin :" />
-      <Text layoutX="418.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status de l'evenement : " />
+      <Text layoutX="417.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status de l'evenement : " />
       <Text layoutX="46.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client : " />
       <Text layoutX="43.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description de l'evenement :" />
-      <TextArea fx:id="fieldDescription" layoutX="43.0" layoutY="288.0" prefHeight="200.0" prefWidth="691.0" />
-      <Button fx:id="ajouter" layoutX="623.0" layoutY="528.0" mnemonicParsing="false" onAction="#OnAjout" prefHeight="41.0" prefWidth="104.0" style="-fx-background-color: green;" text="Ajouter" />
-      <DatePicker fx:id="fieldDateD" layoutX="196.0" layoutY="122.0" prefHeight="25.0" prefWidth="151.0" />
-      <DatePicker fx:id="fieldDateF" layoutX="196.0" layoutY="163.0" prefHeight="25.0" prefWidth="151.0" />
-      <ComboBox fx:id="fieldClient" layoutX="196.0" layoutY="209.0" prefWidth="150.0" />
-      <ComboBox fx:id="fieldType" layoutX="578.0" layoutY="34.0" prefWidth="150.0" />
-      <CheckBox fx:id="fieldStatus" layoutX="578.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" text="Publique" />
+      <TextArea fx:id="fieldDescription" layoutX="43.0" layoutY="288.0" prefHeight="200.0" prefWidth="691.0" styleClass="textfield" />
+      <Button fx:id="ajouter" layoutX="623.0" layoutY="528.0" mnemonicParsing="false" onAction="#OnAjout" prefHeight="41.0" prefWidth="104.0" styleClass="addbtn" text="Ajouter" />
+      <DatePicker fx:id="fieldDateD" layoutX="196.0" layoutY="122.0" prefHeight="25.0" prefWidth="151.0" styleClass="textfield" />
+      <DatePicker fx:id="fieldDateF" layoutX="196.0" layoutY="163.0" prefHeight="25.0" prefWidth="151.0" styleClass="textfield" />
+      <ComboBox fx:id="fieldClient" layoutX="196.0" layoutY="209.0" prefWidth="150.0" styleClass="textfield" />
+      <ComboBox fx:id="fieldType" layoutX="578.0" layoutY="34.0" prefWidth="150.0" styleClass="textfield" />
+      <CheckBox fx:id="fieldStatus" layoutX="578.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" styleClass="checkbox" text="Publique" />
    </children>
 </AnchorPane>

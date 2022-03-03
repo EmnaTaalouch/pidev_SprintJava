@@ -82,7 +82,7 @@ public class HistoriqueEventController implements Initializable {
         e.add(DemandeStatusEnum.DemandeAccepted.toString());
         e.add(DemandeStatusEnum.DemandeRefused.toString());
         demandefield.getItems().setAll(e);
-        demandefield.getSelectionModel().selectFirst();;
+        demandefield.getSelectionModel().selectFirst();
         OnSelectStatus();
         chercher();
         popupModifierInterface();

@@ -17,28 +17,29 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import pidev.Services.EventService;
 
 /**
  *
  * @author Emna
  */
 public class MainController implements Initializable {
-    
+
     private Label label;
-    
+
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText("Hello World!");
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void client(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("ClientInterface.fxml"));
             AnchorPane rootLayout = (AnchorPane) loader.load();
@@ -54,7 +55,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void responsable(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("ResponsableInterface.fxml"));
             AnchorPane rootLayout = (AnchorPane) loader.load();
@@ -67,5 +68,5 @@ public class MainController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
-    
+
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="662.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ReserverEventClientController">
+<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="662.0" prefWidth="835.0" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ReserverEventClientController">
    <children>
       <TextField fx:id="fieldNom" layoutX="52.0" layoutY="44.0" prefHeight="25.0" prefWidth="231.0" promptText="Nom evenement" />
       <TextField fx:id="fieldTheme" layoutX="52.0" layoutY="97.0" prefHeight="25.0" prefWidth="231.0" promptText="theme evenement" />
@@ -20,7 +20,7 @@
       <Text layoutX="58.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jusqu'à" />
       <Text layoutX="418.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status de l'evenement : " />
       <TextArea fx:id="fieldDescription" layoutX="52.0" layoutY="315.0" prefHeight="200.0" prefWidth="691.0" promptText="Description de l'evenement" />
-      <Button fx:id="btnreserver" layoutX="639.0" layoutY="550.0" mnemonicParsing="false" onAction="#OnReserve" prefHeight="41.0" prefWidth="104.0" style="-fx-background-color: green;" text="Reserver" />
+      <Button fx:id="btnreserver" layoutX="639.0" layoutY="550.0" mnemonicParsing="false" onAction="#OnReserve" prefHeight="41.0" prefWidth="104.0" styleClass="addbtn" text="Reserver" />
       <DatePicker fx:id="fieldDateD" layoutX="132.0" layoutY="160.0" prefHeight="25.0" prefWidth="151.0" />
       <DatePicker fx:id="fieldDateF" layoutX="132.0" layoutY="218.0" prefHeight="25.0" prefWidth="151.0" />
       <ComboBox fx:id="fieldType" layoutX="428.0" layoutY="44.0" prefHeight="25.0" prefWidth="217.0" promptText="Type de l'evenement" />

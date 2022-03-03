@@ -6,9 +6,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ListeEvenementsController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="556.0" prefWidth="1000.0" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ListeEvenementsController">
    <children>
-      <TableView fx:id="tabevent" layoutX="44.0" layoutY="64.0" prefHeight="289.0" prefWidth="937.0">
+      <TableView fx:id="tabevent" layoutX="31.0" layoutY="116.0" prefHeight="289.0" prefWidth="937.0">
         <columns>
           <TableColumn fx:id="colnom" prefWidth="137.0" text="Nom Evenement" />
           <TableColumn fx:id="coltype" prefWidth="119.0" text="Type Evenement" />
@@ -18,8 +18,9 @@
             <TableColumn fx:id="colstatus" prefWidth="103.0" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="843.0" layoutY="393.0" mnemonicParsing="false" onAction="#OnAjoutEvent" prefHeight="52.0" prefWidth="121.0" style="-fx-background-color: green;" text="Ajouter" />
-      <TextField fx:id="searchfield" layoutX="44.0" layoutY="21.0" prefHeight="25.0" prefWidth="190.0" promptText="chercher evenement . ." />
-      <Button layoutX="710.0" layoutY="393.0" mnemonicParsing="false" onAction="#OnActualiserEvent" prefHeight="52.0" prefWidth="121.0" style="-fx-background-color: grey;" text="Actualiser" />
+      <Button layoutX="872.0" layoutY="437.0" mnemonicParsing="false" onAction="#OnAjoutEvent" prefHeight="44.0" prefWidth="96.0" styleClass="addbtn" text="Ajouter" />
+      <TextField fx:id="searchfield" layoutX="31.0" layoutY="71.0" prefHeight="34.0" prefWidth="209.0" promptText="chercher evenement . ." />
+      <Button layoutX="759.0" layoutY="437.0" mnemonicParsing="false" onAction="#OnActualiserEvent" prefHeight="44.0" prefWidth="96.0" styleClass="refreshbtn" text="Actualiser" />
+      <Button layoutX="855.0" layoutY="75.0" mnemonicParsing="false" onAction="#ExportPdf" prefHeight="26.0" prefWidth="86.0" styleClass="menubtn" text="Export PDF" />
    </children>
 </AnchorPane>

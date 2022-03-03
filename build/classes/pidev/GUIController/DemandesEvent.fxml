@@ -6,9 +6,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.DemandesEventController">
+<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="1000.0" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.DemandesEventController">
    <children>
-      <TableView fx:id="tabdem" layoutX="53.0" layoutY="65.0" prefHeight="259.0" prefWidth="930.0">
+      <TableView fx:id="tabdem" layoutX="25.0" layoutY="92.0" prefHeight="259.0" prefWidth="930.0">
         <columns>
           <TableColumn fx:id="colnom" prefWidth="119.0" text="Nom evenement" />
           <TableColumn fx:id="coltype" prefWidth="161.0" text="Type evenement" />
@@ -18,8 +18,8 @@
             <TableColumn fx:id="colstatus" prefWidth="138.0" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="663.0" layoutY="389.0" mnemonicParsing="false" onAction="#OnAccepterEvent" prefHeight="62.0" prefWidth="140.0" style="-fx-background-color: green;" text="Accepter" />
-      <Button layoutX="816.0" layoutY="389.0" mnemonicParsing="false" onAction="#OnRefuserEvent" prefHeight="62.0" prefWidth="140.0" style="-fx-background-color: red;" text="Refuser" />
-      <TextField fx:id="searchfield" layoutX="53.0" layoutY="26.0" prefHeight="25.0" prefWidth="227.0" promptText="chercher demande . ." />
+      <Button layoutX="687.0" layoutY="389.0" mnemonicParsing="false" onAction="#OnAccepterEvent" prefHeight="48.0" prefWidth="116.0" styleClass="addbtn" text="Accepter" />
+      <Button layoutX="840.0" layoutY="389.0" mnemonicParsing="false" onAction="#OnRefuserEvent" prefHeight="48.0" prefWidth="116.0" styleClass="deletebtn" text="Refuser" />
+      <TextField fx:id="searchfield" layoutX="25.0" layoutY="37.0" prefHeight="30.0" prefWidth="294.0" promptText="chercher demande . ." />
    </children>
 </AnchorPane>

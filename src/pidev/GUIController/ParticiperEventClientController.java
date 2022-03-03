@@ -25,6 +25,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -55,16 +56,16 @@ public class ParticiperEventClientController implements Initializable {
         sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         afficherPublicEvent(paneevent);
-        sp.setContent(paneevent); 
+        sp.setContent(paneevent);
         anchor.getChildren().add(sp);
-        
-    }    
-    
-    HBox cardTemplate(String stringnom,String stringtype,String stringtheme,String stringlieu,String stringdated,String stringdatef,String stringparticipant,int id_event ) {
+
+    }
+
+    HBox cardTemplate(String stringnom, String stringtype, String stringtheme, String stringlieu, String stringdated, String stringdatef, String stringparticipant, int id_event) {
         InputStream stream = null;
         HBox mainHbox = new HBox();
         try {
-            
+
             VBox imgbtnVBox = new VBox();
             ImageView img = new ImageView();
             stream = new FileInputStream("C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava\\src\\Assets\\Images\\event.png");
@@ -76,42 +77,48 @@ public class ParticiperEventClientController implements Initializable {
             Button btnParticipe = new Button("Participer");
             btnParticipe.setPrefSize(120, 30);
             btnParticipe.setStyle("-fx-background-color : pink");
+            
             VBox infoVBox = new VBox();
             infoVBox.setSpacing(5);
-            Text nomEvent = new Text("Nom Event : "+stringnom);
+            Text nomEvent = new Text("Nom Event : " + stringnom);
             nomEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20));
-            Text typeEvent = new Text("Type Event: "+stringtype);
-            typeEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20)); 
-            Text themeEvent = new Text("Theme Event : "+stringtheme);
+            Text typeEvent = new Text("Type Event: " + stringtype);
+            typeEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20));
+            Text themeEvent = new Text("Theme Event : " + stringtheme);
             themeEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20));
-            Text lieuEvent = new Text("Lieu Event : "+stringlieu);
+            Text lieuEvent = new Text("Lieu Event : " + stringlieu);
             lieuEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20));
-            Text dateEvent = new Text("De   "+stringdated+"   Jusqu'à   "+stringdatef);
+            Text dateEvent = new Text("De   " + stringdated + "   Jusqu'à   " + stringdatef);
             dateEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20));
-            Text nbrPartEvent = new Text("Participants : "+stringparticipant);
+            Text nbrPartEvent = new Text("Participants : " + stringparticipant);
             nbrPartEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20));
-            infoVBox.getChildren().addAll(nomEvent,typeEvent,themeEvent,lieuEvent,dateEvent,nbrPartEvent);
+            infoVBox.getChildren().addAll(nomEvent, typeEvent, themeEvent, lieuEvent, dateEvent, nbrPartEvent);
             btnParticipe.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    if(es.verifier(1, id_event)) {
-                      es.participer(1, id_event);
-                    es.decremente(id_event);
-                    afficherPublicEvent(paneevent);  
-                    }
-                    else {
+                    if (es.verifier(1, id_event)) {
+                        es.participer(1, id_event);
+                        es.decremente(id_event);
+                        es.sendsms("53328112", stringnom,stringdated,stringdatef);
+                        afficherPublicEvent(paneevent);
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION.ERROR);
+                        alert.setTitle("Participation");
+                        alert.setHeaderText(null);
+                        alert.setContentText("vous avez participé a cet evenement");
+                        alert.showAndWait();
+                    } else {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION.ERROR);
                         alert.setTitle("Participation");
                         alert.setHeaderText(null);
                         alert.setContentText("Oh Oh , Tu as deja participé a cet evenenemet");
                         alert.showAndWait();
                     }
-                    
+
                 }
             });
-            imgbtnVBox.getChildren().addAll(img,btnParticipe);
-            mainHbox.getChildren().addAll(imgbtnVBox,infoVBox);
-           
+            imgbtnVBox.getChildren().addAll(img, btnParticipe);
+            mainHbox.getChildren().addAll(imgbtnVBox, infoVBox);
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ParticiperEventClientController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -121,17 +128,16 @@ public class ParticiperEventClientController implements Initializable {
                 Logger.getLogger(ParticiperEventClientController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-         return mainHbox;
+        return mainHbox;
     }
-    
-    
+
     void afficherPublicEvent(VBox v) {
         paneevent.getChildren().clear();
-         for (Event t : es.afficherpublicevenement()) {
+        for (Event t : es.afficherpublicevenement()) {
             Text diver = new Text(" \n ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- \n");
-            v.getChildren().add(cardTemplate(t.getNom_event(),t.getId_type().getLibelle(),t.getEvent_theme(),t.getLieu(),t.getDate_debut().toString(),t.getDate_fin().toString(),String.valueOf(t.getNbr_participants()),t.getId()));
+            v.getChildren().add(cardTemplate(t.getNom_event(), t.getId_type().getLibelle(), t.getEvent_theme(), t.getLieu(), t.getDate_debut().toString(), t.getDate_fin().toString(), String.valueOf(t.getNbr_participants()), t.getId()));
             v.getChildren().add(diver);
         }
     }
-    
+
 }

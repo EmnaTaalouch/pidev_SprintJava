@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="662.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ModifierReservationEventClienController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="662.0" prefWidth="835.0" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ModifierReservationEventClienController">
    <children>
       <TextField fx:id="fieldNom" layoutX="62.0" layoutY="54.0" prefHeight="25.0" prefWidth="231.0" promptText="Nom evenement" />
       <TextField fx:id="fieldTheme" layoutX="62.0" layoutY="107.0" prefHeight="25.0" prefWidth="231.0" promptText="theme evenement" />
@@ -20,7 +20,7 @@
       <Text layoutX="68.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jusqu'à" />
       <Text layoutX="428.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status de l'evenement : " />
       <TextArea fx:id="fieldDescription" layoutX="62.0" layoutY="325.0" prefHeight="200.0" prefWidth="691.0" promptText="Description de l'evenement" />
-      <Button fx:id="btnmodif" layoutX="538.0" layoutY="557.0" mnemonicParsing="false" onAction="#OnModifier" prefHeight="41.0" prefWidth="104.0" style="-fx-background-color: orange;" text="Modifier" />
+      <Button fx:id="btnmodif" layoutX="538.0" layoutY="557.0" mnemonicParsing="false" onAction="#OnModifier" prefHeight="41.0" prefWidth="104.0" styleClass="updatebtn" text="Modifier" />
       <DatePicker fx:id="fieldDateD" layoutX="142.0" layoutY="170.0" prefHeight="25.0" prefWidth="151.0" />
       <DatePicker fx:id="fieldDateF" layoutX="142.0" layoutY="228.0" prefHeight="25.0" prefWidth="151.0" />
       <ComboBox fx:id="fieldType" layoutX="438.0" layoutY="54.0" prefHeight="25.0" prefWidth="217.0" promptText="Type de l'evenement" />
@@ -30,7 +30,7 @@
             <RadioButton fx:id="btnpublic" layoutX="86.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="91.0" text="Publique" />
          </children>
       </Group>
-      <Button fx:id="btnsupp" layoutX="655.0" layoutY="557.0" mnemonicParsing="false" onAction="#Onsupprimer" prefHeight="41.0" prefWidth="104.0" style="-fx-background-color: red;" text="Supprimer" />
+      <Button fx:id="btnsupp" layoutX="655.0" layoutY="557.0" mnemonicParsing="false" onAction="#Onsupprimer" prefHeight="41.0" prefWidth="104.0" styleClass="deletebtn" text="Supprimer" />
       <Text fx:id="label" layoutX="131.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="113.13671875" />
    </children>
 </AnchorPane>

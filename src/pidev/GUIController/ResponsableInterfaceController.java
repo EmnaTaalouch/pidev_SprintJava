@@ -80,7 +80,7 @@ public class ResponsableInterfaceController implements Initializable {
 
     @FXML
     private void onanimateevent(MouseEvent event) {
-        if (!actionevent) {
+        if (actionevent==false) {
             vboxmainevent.getChildren().add(vboxanimevent);
             actionevent=true;
         }
