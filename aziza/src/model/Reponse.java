@@ -7,7 +7,7 @@ package model;
 
 /**
  *
- * @author adem
+ * @author hp
  */
 public class Reponse {
     private int id;

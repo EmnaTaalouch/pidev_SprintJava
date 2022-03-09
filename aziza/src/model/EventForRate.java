@@ -9,7 +9,7 @@ import java.sql.Date;
 
 /**
  *
- * @author adem
+ * @author hp
  */
 public class EventForRate {
     

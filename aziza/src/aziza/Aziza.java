@@ -20,7 +20,7 @@ public class Aziza extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/Reclamation.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/Evaluation.fxml"));
         
         Scene scene = new Scene(root);
         

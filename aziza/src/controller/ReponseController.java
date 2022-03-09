@@ -50,25 +50,15 @@ public class ReponseController implements Initializable {
     @FXML
     private TextArea ta_reponse;
     @FXML
-    private Label label_date;
-    @FXML
-    private Label label_description;
-    @FXML
-    private ImageView img_reclamation;
-    @FXML
-    private Label label_clientId;
-    @FXML
-    private TextArea tf_descReclamation;
-    @FXML
-    private TextField tf_date;
-    @FXML
-    private TextField tf_idClient;
-    @FXML
     private TextField tf_idReclamation;
     @FXML
-    private Label rec_label;
-    @FXML
     private Button btn_ReponseConfirm;
+    @FXML
+    private TableView<Reponse> tv_reponse;
+    @FXML
+    private TableColumn<Reponse, Integer> Col_id_Rec;
+    @FXML
+    private TableColumn<Reponse, String> col_text;
 
     /**
      * Initializes the controller class.
@@ -94,24 +84,17 @@ public class ReponseController implements Initializable {
         Reclamation rec = tv_reclamation.getSelectionModel().getSelectedItem();
         
         tf_idReclamation.setText(Integer.toString(rec.getId()));
-        img_reclamation.setImage(new Image(rec.getImage()));
-        tf_descReclamation.setText(rec.getDescription());
-        tf_idClient.setText(""+rec.getId());
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
-        String strDate = dateFormat.format(rec.getDate_reclamation());  
-        tf_date.setText(strDate);
-        
-        img_reclamation.setVisible(true);
-        tf_descReclamation.setVisible(true);
-        tf_idClient.setVisible(true);
-        tf_date.setVisible(true);
-        
-        label_clientId.setVisible(true);
-        label_date.setVisible(true);
-        label_description.setVisible(true);
-        rec_label.setVisible(true);
         
         
+        showRepo(rec.getId());
+
+    }
+    
+        public void showRepo(int id){
+        ObservableList<Reponse> list = new ReponseService().afficherReponse(id);
+        Col_id_Rec.setCellValueFactory(new PropertyValueFactory<Reponse, Integer>("id"));
+        col_text.setCellValueFactory(new PropertyValueFactory<Reponse, String>("text"));
+        tv_reponse.setItems(list);
     }
 
     @FXML
@@ -119,6 +102,10 @@ public class ReponseController implements Initializable {
         Reponse r = new Reponse(ta_reponse.getText(), Integer.parseInt(tf_idReclamation.getText()));
         rs.addReponse(r);
         ta_reponse.setText("");
+    }
+
+    @FXML
+    private void afficherReponse(MouseEvent event) {
     }
 
     

@@ -6,6 +6,7 @@
 package service;
 
 import aziza.Database;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Reclamation;
 
 /**
@@ -30,13 +33,25 @@ public class ReclamationService {
         connection=Database.getInstance().getConnection();
     }
     public ObservableList <Reclamation> readAll(int id_client){
+        Reclamation rec=null;
             String req="select* from reclamation where id_client = "+id_client+"";          
             ObservableList <Reclamation> list=FXCollections.observableArrayList();
          try {
             ste=connection.createStatement();
             rs=ste.executeQuery(req);
             while(rs.next()){
-                list.add(new Reclamation(rs.getInt("id"),rs.getString("description"), rs.getDate("date_reclamation"), rs.getString("image"),rs.getInt("id_client") ));
+                rec = new Reclamation(rs.getInt("id"),rs.getString("description"), rs.getDate("date_reclamation"), rs.getString("image"),rs.getInt("id_client") );
+                              
+                File file = new File(rec.getImage());
+                Image image = new Image(file.toURI().toString());
+                
+                ImageView imageView =new ImageView(image);
+                imageView.setImage(image);
+                imageView.setFitHeight(100);
+                imageView.setFitWidth(100);
+
+                rec.setImg(imageView);                
+                list.add(rec);
             }
         } catch (SQLException ex) {
              Logger.getLogger(Reclamation.class.getName()).log(Level.SEVERE, null, ex);

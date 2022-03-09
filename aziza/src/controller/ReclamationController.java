@@ -34,6 +34,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import model.Reponse;
+import service.ReponseService;
 
 /**
  *
@@ -59,7 +61,7 @@ public class ReclamationController implements Initializable {
     @FXML
     private TableColumn<Reclamation, String> col_desc;
     @FXML
-    private TableColumn<Reclamation, String> col_image;
+    private TableColumn<Reclamation, ImageView> col_image;
 
     ReclamationService rs = new ReclamationService();
     @FXML
@@ -80,6 +82,12 @@ public class ReclamationController implements Initializable {
     private Button btn_affReponse;
 
     public static int rec_id_for_rep;
+    @FXML
+    private TableView<Reponse> tv_reponse;
+    @FXML
+    private TableColumn<Reponse, Integer> Col_id_Rec;
+    @FXML
+    private TableColumn<Reponse, String> col_text;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -91,7 +99,7 @@ public class ReclamationController implements Initializable {
         col_id.setCellValueFactory(new PropertyValueFactory<Reclamation, Integer>("id"));
         col_desc.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("description"));
         col_date.setCellValueFactory(new PropertyValueFactory<Reclamation, Date>("date_reclamation"));
-        col_image.setCellValueFactory(new PropertyValueFactory<Reclamation, String>("image"));
+        col_image.setCellValueFactory(new PropertyValueFactory<Reclamation, ImageView>("img"));
         tv_reclamation.setItems(list);
     }
     @FXML
@@ -142,9 +150,18 @@ public class ReclamationController implements Initializable {
         
         
         dp_date.setValue(LocalDate.of(year, month, day));
-        iv_image.setImage(new Image(rec.getImage()));
+     //   iv_image.setImage(new Image(rec.getImage()));
+        showRepo(rec.getId());
 
     }
+    
+        public void showRepo(int id){
+        ObservableList<Reponse> list = new ReponseService().afficherReponse(id);
+        Col_id_Rec.setCellValueFactory(new PropertyValueFactory<Reponse, Integer>("id"));
+        col_text.setCellValueFactory(new PropertyValueFactory<Reponse, String>("text"));
+        tv_reponse.setItems(list);
+    }
+
     @FXML
     private void clearFields(javafx.event.ActionEvent event) {
         tf_id.setText("");

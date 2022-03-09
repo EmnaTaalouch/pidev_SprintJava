@@ -40,22 +40,6 @@ public class EvaluationService {
     public EvaluationService() {
         connection = Database.getInstance().getConnection();
     }
-
-//    public String getResponsableName(int id){
-//        String req = "select nom from user where id = " + id + "";
-//        String responsable ="";
-//        try {
-//            ste = connection.createStatement();
-//            rs = ste.executeQuery(req);
-//            while (rs.next()){
-//               responsable = rs.getString("nom");
-//            }
-//        } catch (Exception e) {
-//            Logger.getLogger(EventForRate.class.getName()).log(Level.SEVERE, null, e);
-//        }
-//        System.out.println(responsable);
-//        return responsable;
-//    }
     public ObservableList<EventForRate> readAllEvents() {
         String req = "select* from event";
         ObservableList<EventForRate> list = FXCollections.observableArrayList();
@@ -87,19 +71,8 @@ public class EvaluationService {
 
     public void insertEvaluation(Evaluation e, int id_client) {
 
-        String reqI = "select* from evaluation where id_client = " + id_client + "";
-        ObservableList<Evaluation> list = FXCollections.observableArrayList();
-        try {
-            ste = connection.createStatement();
-            rs = ste.executeQuery(reqI);
-            while (rs.next()) {
-                list.add(new Evaluation(rs.getInt("id"), rs.getString("commentaire"), rs.getFloat("rate"), rs.getDate("date_evaluation"), rs.getInt("id_client"), rs.getInt("id_evenement")));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Evaluation.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (list.size() == 0) {
+                
+            
             String req = "insert into evaluation (commentaire,rate,date_evaluation,id_client,id_evenement) values (?,?,?,?,?)";
             try {
                 pst = connection.prepareStatement(req);
@@ -108,7 +81,7 @@ public class EvaluationService {
                 pst.setString(1, e.getCommentaire());
                 pst.setFloat(2, e.getRate());
                 pst.setDate(3, sqlDate);
-                pst.setInt(4, e.getId_client());
+                pst.setInt(4, id_client);
                 pst.setInt(5, e.getId_evenement());
 
                 pst.executeUpdate();
@@ -116,26 +89,7 @@ public class EvaluationService {
             } catch (SQLException ex) {
                 Logger.getLogger(ReclamationService.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else
-        {
-            String req = "update evaluation set commentaire = ? , rate = ? , date_evaluation = ?   where id_client = ?";
-            try {
-                pst = connection.prepareStatement(req);
-                java.sql.Date sqlDate = new java.sql.Date(e.getDate_evaluation().getTime());
-
-                pst.setString(1, e.getCommentaire());
-                pst.setFloat(2, e.getRate());
-                pst.setDate(3, sqlDate);
-                pst.setInt(4, e.getId_client());
-
-                pst.executeUpdate();
-
-            } catch (SQLException ex) {
-                Logger.getLogger(ReclamationService.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
         }
-    }
     
     public ObservableList<Evaluation> readAllComments(int id_evenement)
     {

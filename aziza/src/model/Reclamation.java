@@ -6,10 +6,11 @@
 package model;
 
 import java.sql.Date;
+import javafx.scene.image.ImageView;
 
 /**
  *
- * @author adem
+ * @author hp
  */
 public class Reclamation {
     private int id;
@@ -17,6 +18,15 @@ public class Reclamation {
     private Date date_reclamation;
     private String image;
     private int id_client;
+    private ImageView img;
+
+    public ImageView getImg() {
+        return img;
+    }
+
+    public void setImg(ImageView img) {
+        this.img = img;
+    }
 
     public Reclamation(int id, String description, Date date_reclamation, String image, int id_client) {
         this.id = id;

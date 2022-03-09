@@ -6,19 +6,20 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
-<AnchorPane id="AnchorPane" prefHeight="632.0" prefWidth="1012.0" style="-fx-background-color: #F5F5DC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EvaluationController">
+<AnchorPane id="AnchorPane" prefHeight="642.0" prefWidth="1012.0" style="-fx-background-color: #9A8873;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EvaluationController">
    <children>
-      <Label layoutX="437.0" layoutY="14.0">
+      <TextField fx:id="tf_idEv" layoutX="195.0" layoutY="102.0" />
+      <Label layoutX="437.0" layoutY="14.0" text="Evenements">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
       <Label fx:id="eventID_label" layoutX="244.0" layoutY="106.0" prefHeight="18.0" prefWidth="26.0" />
-      <TableView fx:id="tv_event" layoutX="310.0" layoutY="75.0" onMouseClicked="#tableClicked" prefHeight="200.0" prefWidth="616.0" style="-fx-background-color: #FFB6C1;">
+      <TableView fx:id="tv_event" layoutX="60.0" layoutY="70.0" onMouseClicked="#tableClicked" prefHeight="200.0" prefWidth="633.0" style="-fx-background-color: #754043;">
         <columns>
           <TableColumn fx:id="col_nomEvent" prefWidth="108.00001525878906" text="Nom" />
           <TableColumn fx:id="col_themeEvent" prefWidth="122.39990234375" text="Theme" />
@@ -26,52 +27,12 @@
             <TableColumn fx:id="col_dateFinEvent" prefWidth="106.4000244140625" text="date_fin" />
             <TableColumn fx:id="col_ResponsableEvent" prefWidth="108.0" text="Responsable" />
             <TableColumn fx:id="col_rateEvent" prefWidth="80.79998779296875" text="Rate" />
+            <TableColumn fx:id="col_IdEvent" prefWidth="108.00001525878906" text="id" visible="false" />
         </columns>
       </TableView>
-      <Label fx:id="eventName_label" layoutX="176.0" layoutY="369.0" />
-      <Label fx:id="themeEvent_label" layoutX="175.0" layoutY="395.0" />
-      <Label fx:id="date_debutEvent_label" layoutX="176.0" layoutY="424.0" />
-      <Label fx:id="responsableEvent_label" layoutX="176.0" layoutY="480.0" />
-      <Label fx:id="rateEvent_Label" layoutX="175.0" layoutY="502.0" />
-      <Label fx:id="LabN" layoutX="60.0" layoutY="369.0" text="Event Name" visible="false">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="LabT" layoutX="60.0" layoutY="395.0" text="Event Theme" visible="false">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="LabS" layoutX="60.0" layoutY="420.0" prefHeight="18.0" prefWidth="67.0" text="Event Start" visible="false">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="LabE" layoutX="60.0" layoutY="448.0" text="Event End" visible="false">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="LabR" layoutX="60.0" layoutY="476.0" text="Responsable" visible="false">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="LabRate" layoutX="60.0" layoutY="503.0" text="Rate" visible="false">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="ta_commentaire" layoutX="625.0" layoutY="312.0" prefHeight="200.0" prefWidth="298.0" />
-      <Button fx:id="evaluation_btn" layoutX="782.0" layoutY="533.0" mnemonicParsing="false" onMouseClicked="#addEvaluation" text="Add Evaluation" />
-      <Label fx:id="date_finEventLabel" layoutX="175.0" layoutY="454.0" />
+      <TextArea fx:id="ta_commentaire" layoutX="151.0" layoutY="311.0" prefHeight="184.0" prefWidth="298.0" />
+      <Button fx:id="evaluation_btn" layoutX="507.0" layoutY="391.0" mnemonicParsing="false" onMouseClicked="#addEvaluation" text="Add Evaluation" />
       <Label fx:id="labelAjRep" layoutX="523.0" layoutY="270.0" text="Ajouter votre evaluation" visible="false">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelRec" layoutX="189.0" layoutY="270.0" text="Evenement :" visible="false">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
@@ -81,8 +42,7 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="tf_rate" layoutX="618.0" layoutY="539.0" prefHeight="26.0" prefWidth="69.0" />
-      <Label layoutX="563.0" layoutY="542.0" text="Rate :">
+      <Label layoutX="183.0" layoutY="524.0" text="Rate :">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -92,14 +52,11 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="169.0" layoutY="539.0" mnemonicParsing="false" onAction="#afficherCommentaires" text="Afficher Commentaires">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="124.0" fitWidth="158.0" layoutX="18.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView id="logo" fitHeight="124.0" fitWidth="172.0" layoutX="16.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+      <Rating fx:id="rate" layoutX="241.0" layoutY="521.0" />
+      <TableView fx:id="tv_comm" layoutX="755.0" layoutY="70.0" prefHeight="200.0" prefWidth="222.0">
+         <columns>
+            <TableColumn fx:id="col_comment" prefWidth="218.0" text="Commentaires" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="642.0" prefWidth="1012.0" style="-fx-background-color: #9A8873;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReclamationController">
+<AnchorPane id="AnchorPane" prefHeight="642.0" prefWidth="1012.0" style="-fx-background-color: #9A8873;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReclamationController">
    <children>
       <TextField fx:id="tf_id" layoutX="582.0" layoutY="126.0" prefHeight="26.0" prefWidth="294.0" />
       <TextArea fx:id="ta_desc" layoutX="218.0" layoutY="200.0" prefHeight="118.0" prefWidth="293.0" />
@@ -37,7 +37,7 @@
       <Button fx:id="but_update" layoutX="316.0" layoutY="589.0" mnemonicParsing="false" onMouseClicked="#updateReclamation" prefHeight="26.0" prefWidth="99.0" text="Update" />
       <Button fx:id="but_delete" layoutX="442.0" layoutY="590.0" mnemonicParsing="false" onMouseClicked="#deleteReclamation" prefHeight="26.0" prefWidth="99.0" text="Delete" />
       <TextField fx:id="tf_image" disable="true" layoutX="220.0" layoutY="504.0" prefHeight="26.0" prefWidth="213.0" />
-      <TableView fx:id="tv_reclamation" layoutX="562.0" layoutY="94.0" onMouseClicked="#tableClicked" prefHeight="425.0" prefWidth="435.0">
+      <TableView fx:id="tv_reclamation" layoutX="562.0" layoutY="94.0" onMouseClicked="#tableClicked" prefHeight="283.0" prefWidth="435.0">
         <columns>
           <TableColumn fx:id="col_id" prefWidth="49.60003662109375" text="ID" />
           <TableColumn fx:id="col_date" prefWidth="75.199951171875" text="Date" />
@@ -52,5 +52,11 @@
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
+      <TableView fx:id="tv_reponse" layoutX="561.0" layoutY="404.0" onMouseClicked="#afficherReponse" prefHeight="200.0" prefWidth="437.0">
+         <columns>
+            <TableColumn fx:id="Col_id_Rec" prefWidth="132.79998779296875" text="id_Reclamation" />
+            <TableColumn fx:id="col_text" prefWidth="304.0000244140625" text="Text" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>
