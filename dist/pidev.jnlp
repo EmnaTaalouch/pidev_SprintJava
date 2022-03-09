@@ -12,7 +12,7 @@
     <jar href="lib\javax.mail.jar" size="434923" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
     <jar href="lib\twilio-8.9.0-jar-with-dependencies.jar" size="8358946" download="eager" />
-    <jar href="pidev.jar" size="297119" download="eager" />
+    <jar href="pidev.jar" size="383539" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="pidev" >
     <param name="requiredFXVersion" value="8.0+"/>

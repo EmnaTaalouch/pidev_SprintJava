@@ -5,11 +5,19 @@
  */
 package pidev.GUIController;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -23,9 +31,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.swing.filechooser.FileSystemView;
 import pidev.Entities.Event;
 import pidev.Entities.EventStatusEnum;
 import pidev.Entities.Event_type;
@@ -73,6 +85,14 @@ public class ModifierEventResponsableController implements Initializable {
     
     EventService es = new EventService();
     EventTypeService ets = new EventTypeService();
+    @FXML
+    private ComboBox<?> fieldType1;
+    @FXML
+    private Button upload;
+    @FXML
+    private ImageView image;
+    
+    private String  listview,Path;
 
     /**
      * Initializes the controller class.
@@ -128,20 +148,26 @@ public class ModifierEventResponsableController implements Initializable {
     }
     void setData(Event t) {
         
-        label.setText(String.valueOf(t.getId()));
-        fieldNom.setText(t.getNom_event());
-        fieldTheme.setText(t.getEvent_theme());
-        fieldNbr.setText(String.valueOf(t.getNbr_participants()));
-        fieldLieu.setText(t.getLieu());
-        fieldDescription.setText(t.getEvent_description());
-        fieldDateD.setValue(t.getDate_debut().toLocalDate());
-        fieldDateF.setValue(t.getDate_fin().toLocalDate());
-        fieldClient.setValue(t.getId_client());
-        fieldType.setValue(t.getId_type());   
+        try {
+            label.setText(String.valueOf(t.getId()));
+            fieldNom.setText(t.getNom_event());
+            fieldTheme.setText(t.getEvent_theme());
+            fieldNbr.setText(String.valueOf(t.getNbr_participants()));
+            fieldLieu.setText(t.getLieu());
+            fieldDescription.setText(t.getEvent_description());
+            fieldDateD.setValue(t.getDate_debut().toLocalDate());
+            fieldDateF.setValue(t.getDate_fin().toLocalDate());
+            fieldClient.setValue(t.getId_client());
+            fieldType.setValue(t.getId_type());
+            System.out.println(t.getImage_event());
+            image.setImage(new Image(new FileInputStream("C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava\\src\\Assets\\Uploads\\"+t.getImage_event())));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ModifierEventResponsableController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
-    private void OnModifier(ActionEvent event) {
+    private void OnModifier(ActionEvent event) throws IOException {
         if(testSaisie()) {
            Event t = new Event();
         t.setNom_event(fieldNom.getText());
@@ -151,6 +177,16 @@ public class ModifierEventResponsableController implements Initializable {
         t.setEvent_description(fieldDescription.getText());
         t.setDate_debut(Date.valueOf(fieldDateD.getValue()));
         t.setDate_fin(Date.valueOf(fieldDateF.getValue()));
+         if(listview==null){
+            t.setImage_event("defaultimage.png");
+        }
+        else {
+            t.setImage_event(listview);
+            String PathTo= "C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava\\src\\Assets\\Uploads\\"+listview; 
+            File org=new File(Path);
+            File news=new File(PathTo);
+            Files.copy(org.toPath(), news.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        }
         if(fieldStatus.getText().equals("Privé"))
             t.setEvent_status(EventStatusEnum.Privé.toString());
         else
@@ -194,6 +230,31 @@ public class ModifierEventResponsableController implements Initializable {
                 }
             }
         });
+    }
+
+    @FXML
+    private void OnUpload(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        File home = FileSystemView.getFileSystemView().getHomeDirectory();
+        fc.setInitialDirectory(home);
+    fc.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("image Files","*.png;*.jpeg;*.jpg;*.gif")      
+    );
+    File selectedFiles = fc.showOpenDialog(null);
+    if (selectedFiles !=null){
+        
+            try {
+                listview=selectedFiles.getName();
+                Path=selectedFiles.getAbsolutePath();
+                image.setImage(new Image(new FileInputStream(Path)));
+                System.out.println(listview);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(AjouterEventResponsableController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }else{
+        System.out.println("file is not valid");
+    }
     }
     
 }

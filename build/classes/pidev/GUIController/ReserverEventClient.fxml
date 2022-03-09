@@ -7,6 +7,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
@@ -19,7 +20,7 @@
       <TextField fx:id="fieldLieu" layoutX="431.0" layoutY="160.0" promptText="Lieu" />
       <Text layoutX="58.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jusqu'à" />
       <Text layoutX="418.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status de l'evenement : " />
-      <TextArea fx:id="fieldDescription" layoutX="52.0" layoutY="315.0" prefHeight="200.0" prefWidth="691.0" promptText="Description de l'evenement" />
+      <TextArea fx:id="fieldDescription" layoutX="52.0" layoutY="315.0" prefHeight="200.0" prefWidth="417.0" promptText="Description de l'evenement" />
       <Button fx:id="btnreserver" layoutX="639.0" layoutY="550.0" mnemonicParsing="false" onAction="#OnReserve" prefHeight="41.0" prefWidth="104.0" styleClass="addbtn" text="Reserver" />
       <DatePicker fx:id="fieldDateD" layoutX="132.0" layoutY="160.0" prefHeight="25.0" prefWidth="151.0" />
       <DatePicker fx:id="fieldDateF" layoutX="132.0" layoutY="218.0" prefHeight="25.0" prefWidth="151.0" />
@@ -30,5 +31,9 @@
             <RadioButton fx:id="btnpublic" layoutX="86.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="91.0" text="Publique" />
          </children>
       </Group>
+      <ComboBox fx:id="fieldType1" layoutX="588.0" layoutY="44.0" prefWidth="150.0" styleClass="textfield" />
+      <Button fx:id="upload" layoutX="627.0" layoutY="282.0" mnemonicParsing="false" onAction="#OnUpload" prefHeight="25.0" prefWidth="77.0" styleClass="menubtn" text="Upload " />
+      <Text layoutX="535.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image :  " />
+      <ImageView fx:id="image" fitHeight="200.0" fitWidth="214.0" layoutX="558.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

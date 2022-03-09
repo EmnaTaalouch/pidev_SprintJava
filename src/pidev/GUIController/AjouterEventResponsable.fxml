@@ -6,6 +6,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
@@ -25,12 +26,15 @@
       <Text layoutX="417.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status de l'evenement : " />
       <Text layoutX="46.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client : " />
       <Text layoutX="43.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description de l'evenement :" />
-      <TextArea fx:id="fieldDescription" layoutX="43.0" layoutY="288.0" prefHeight="200.0" prefWidth="691.0" styleClass="textfield" />
+      <TextArea fx:id="fieldDescription" layoutX="43.0" layoutY="288.0" prefHeight="200.0" prefWidth="422.0" styleClass="textfield" />
       <Button fx:id="ajouter" layoutX="623.0" layoutY="528.0" mnemonicParsing="false" onAction="#OnAjout" prefHeight="41.0" prefWidth="104.0" styleClass="addbtn" text="Ajouter" />
       <DatePicker fx:id="fieldDateD" layoutX="196.0" layoutY="122.0" prefHeight="25.0" prefWidth="151.0" styleClass="textfield" />
       <DatePicker fx:id="fieldDateF" layoutX="196.0" layoutY="163.0" prefHeight="25.0" prefWidth="151.0" styleClass="textfield" />
       <ComboBox fx:id="fieldClient" layoutX="196.0" layoutY="209.0" prefWidth="150.0" styleClass="textfield" />
       <ComboBox fx:id="fieldType" layoutX="578.0" layoutY="34.0" prefWidth="150.0" styleClass="textfield" />
       <CheckBox fx:id="fieldStatus" layoutX="578.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" styleClass="checkbox" text="Publique" />
+      <Button fx:id="upload" layoutX="578.0" layoutY="218.0" mnemonicParsing="false" onAction="#OnUpload" prefHeight="25.0" prefWidth="77.0" styleClass="menubtn" text="Upload " />
+      <Text layoutX="424.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image :  " />
+      <ImageView fx:id="image" fitHeight="200.0" fitWidth="214.0" layoutX="560.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

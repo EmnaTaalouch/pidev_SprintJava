@@ -3,20 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/ResponsableInterfaceController.java</file>
-            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/ModifierEventResponsableController.java</file>
             <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/ListeEvenementsController.java</file>
-            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/HistoriqueEventController.java</file>
-            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/ModifierReservationEventClienController.java</file>
             <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/ParticiperEventClientController.java</file>
-            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/ReserverEventClientController.java</file>
-            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/DemandesEventController.java</file>
-            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/ClientInterfaceController.java</file>
-            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/ListeTypeEventController.java</file>
-            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/Pidev.java</file>
-            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/MainController.java</file>
-            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/AjouterEventResponsableController.java</file>
-            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/Services/EventService.java</file>
+            <file>file:/C:/Users/Emna/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/ListeParticipantsController.java</file>
         </group>
     </open-files>
 </project-private>

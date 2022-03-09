@@ -63,14 +63,6 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="42.0" prefWidth="281.0">
                      <children>
-                        <Text onMouseClicked="#AfficherGestionUtilisateur" strokeType="INSIDE" strokeWidth="0.0" styleClass="menubtn" text="Gestion Utilisateur" textOrigin="CENTER" wrappingWidth="237.13671875" x="555.0" y="555.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Text>
                         <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="74.0" style="-fx-background-color: none;" />
                      </children>
                      <VBox.margin>

@@ -172,12 +172,12 @@
     -fx-text-fill:#FFF;
 }
 .menubtn{
-    -fx-background-color: none;
-    -fx-text-fill:#000;
+    -fx-background-color: indigo;
+    -fx-text-fill:#fff;
 }
 .menubtn:hover{
-    -fx-background-color: #E8E6E8;
-    -fx-text-fill:#000;
+    -fx-background-color: #D69AEA;
+    -fx-text-fill:#fff;
 }
 .deletebtn{
     -fx-background-color: red;

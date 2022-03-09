@@ -5,9 +5,17 @@
  */
 package pidev.GUIController;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -20,8 +28,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import javax.swing.filechooser.FileSystemView;
 import pidev.Entities.Event;
 import pidev.Entities.EventStatusEnum;
 import pidev.Entities.Event_type;
@@ -63,6 +76,12 @@ public class AjouterEventResponsableController implements Initializable {
     
     EventService es = new EventService();
     EventTypeService ets = new EventTypeService();
+    
+    private String  listview,Path;
+    @FXML
+    private Button upload;
+    @FXML
+    private ImageView image;
     
 
     /**
@@ -115,7 +134,7 @@ public class AjouterEventResponsableController implements Initializable {
     }
 
     @FXML
-    private void OnAjout(ActionEvent event) {
+    private void OnAjout(ActionEvent event) throws IOException {
         if(testSaisie()) {
         Event t = new Event();
         t.setNom_event(fieldNom.getText());
@@ -125,6 +144,16 @@ public class AjouterEventResponsableController implements Initializable {
         t.setEvent_description(fieldDescription.getText());
         t.setDate_debut(Date.valueOf(fieldDateD.getValue()));
         t.setDate_fin(Date.valueOf(fieldDateF.getValue()));
+        if(listview==null){
+            t.setImage_event("defaultimage.png");
+        }
+        else {
+            t.setImage_event(listview);
+            String PathTo= "C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava\\src\\Assets\\Uploads\\"+listview; 
+            File org=new File(Path);
+            File news=new File(PathTo);
+            Files.copy(org.toPath(), news.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        }
         if(fieldStatus.getText().equals("Privé"))
             t.setEvent_status(EventStatusEnum.Privé.toString());
         else
@@ -135,7 +164,7 @@ public class AjouterEventResponsableController implements Initializable {
         User responsable = new User();
         responsable.setId(2);
         t.setId_responsable(responsable);
-        
+
         es.ajouter(t);
         Stage stage = (Stage) anchorpane.getScene().getWindow();
         stage.close(); 
@@ -156,6 +185,33 @@ public class AjouterEventResponsableController implements Initializable {
                 }
             }
         });
+    }
+    
+  
+
+    @FXML
+    private void OnUpload(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        File home = FileSystemView.getFileSystemView().getHomeDirectory();
+        fc.setInitialDirectory(home);
+    fc.getExtensionFilters().addAll(
+            new ExtensionFilter("image Files","*.png;*.jpeg;*.jpg;*.gif")      
+    );
+    File selectedFiles = fc.showOpenDialog(null);
+    if (selectedFiles !=null){
+        
+            try {
+                listview=selectedFiles.getName();
+                Path=selectedFiles.getAbsolutePath();
+                image.setImage(new Image(new FileInputStream(Path)));
+                System.out.println(listview);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(AjouterEventResponsableController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }else{
+        System.out.println("file is not valid");
+    }
     }
     
 }

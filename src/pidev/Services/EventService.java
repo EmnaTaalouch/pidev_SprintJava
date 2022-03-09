@@ -38,6 +38,7 @@ import javax.swing.filechooser.FileSystemView;
 import pidev.Entities.Event;
 import pidev.Entities.Event_type;
 import pidev.Entities.DemandeStatusEnum;
+import pidev.Entities.EventUser;
 import pidev.Entities.User;
 import pidev.Utils.Database;
 
@@ -52,7 +53,7 @@ public class EventService implements IEventService<Event> {
     private Statement ste;
     private ResultSet rs;
     private final static String ACCOUNT_SID = "ACb3d0e0eced06ffd7beec5ff336b6b389";
-    private final static String AUTH_TOKEN = "9a7fa1c8eaee11c0f8693d2cb0383171";
+    private final static String AUTH_TOKEN = "48a2ce5415323b81c317213fa6a39dab";
 
     public EventService() {
         cnx = Database.getInstance().getConnection();
@@ -60,7 +61,7 @@ public class EventService implements IEventService<Event> {
 
     @Override
     public void ajouter(Event t) {
-        String req = "Insert into event (nom_event,event_description,event_theme,date_debut,date_fin,event_status,demande_status,id_client,id_responsable,id_type,nbr_participants,lieu)  values (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String req = "Insert into event (nom_event,event_description,event_theme,date_debut,date_fin,event_status,demande_status,id_client,id_responsable,id_type,nbr_participants,lieu,image_event)  values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             pst = cnx.prepareStatement(req);
             pst.setString(1, t.getNom_event());
@@ -75,7 +76,7 @@ public class EventService implements IEventService<Event> {
             pst.setInt(10, t.getId_type().getId());
             pst.setInt(11, t.getNbr_participants());
             pst.setString(12, t.getLieu());
-
+            pst.setString(13,t.getImage_event());
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -123,7 +124,7 @@ public class EventService implements IEventService<Event> {
 
     @Override
     public void modifier(Event t, int id) {
-        String req = "update event set nom_event =?,event_description =?,event_theme =?,date_debut =?,date_fin =?,id_type =?,nbr_participants=?,lieu=?,id_client=? where id =? ";
+        String req = "update event set nom_event =?,event_description =?,event_theme =?,date_debut =?,date_fin =?,id_type =?,nbr_participants=?,lieu=?,id_client=?,image_event=? where id =? ";
         try {
             pst = cnx.prepareStatement(req);
             pst.setString(1, t.getNom_event());
@@ -135,7 +136,8 @@ public class EventService implements IEventService<Event> {
             pst.setInt(7, t.getNbr_participants());
             pst.setString(8, t.getLieu());
             pst.setInt(9, t.getId_client().getId());
-            pst.setInt(10, id);
+            pst.setString(10, t.getImage_event());
+            pst.setInt(11, id);
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -181,6 +183,7 @@ public class EventService implements IEventService<Event> {
                 e.setId_type(et);
                 e.setNbr_participants(rs.getInt("e.nbr_participants"));
                 e.setLieu(rs.getString("e.lieu"));
+                e.setImage_event(rs.getString("e.image_event"));
 
             }
         } catch (SQLException ex) {
@@ -214,6 +217,7 @@ public class EventService implements IEventService<Event> {
                 e.setId_type(et);
                 e.setNbr_participants(rs.getInt("e.nbr_participants"));
                 e.setLieu(rs.getString("e.lieu"));
+                e.setImage_event(rs.getString("e.image_event"));
                 list_event.add(e);
             }
         } catch (SQLException ex) {
@@ -243,6 +247,7 @@ public class EventService implements IEventService<Event> {
                 e.setId_type(et);
                 e.setNbr_participants(rs.getInt("e.nbr_participants"));
                 e.setLieu(rs.getString("e.lieu"));
+                e.setImage_event(rs.getString("e.image_event"));
                 list_event.add(e);
             }
         } catch (SQLException ex) {
@@ -275,6 +280,8 @@ public class EventService implements IEventService<Event> {
                 e.setId_type(et);
                 e.setNbr_participants(rs.getInt("e.nbr_participants"));
                 e.setLieu(rs.getString("e.lieu"));
+                e.setImage_event(rs.getString("e.image_event"));
+                e.setImage_event(rs.getString("e.image_event"));
                 list_event.add(e);
             }
         } catch (SQLException ex) {
@@ -308,6 +315,7 @@ public class EventService implements IEventService<Event> {
                 e.setId_type(et);
                 e.setNbr_participants(rs.getInt("e.nbr_participants"));
                 e.setLieu(rs.getString("e.lieu"));
+                e.setImage_event(rs.getString("e.image_event"));
                 list_event.add(e);
             }
         } catch (SQLException ex) {
@@ -340,6 +348,7 @@ public class EventService implements IEventService<Event> {
                 e.setId_type(et);
                 e.setNbr_participants(rs.getInt("e.nbr_participants"));
                 e.setLieu(rs.getString("e.lieu"));
+                e.setImage_event(rs.getString("e.image_event"));
                 list_event.add(e);
             }
         } catch (SQLException ex) {
@@ -350,7 +359,7 @@ public class EventService implements IEventService<Event> {
 
     @Override
     public void reserverEvent(Event t) {
-        String req = "Insert into event (nom_event,event_description,event_theme,date_debut,date_fin,event_status,demande_status,id_client,id_type,nbr_participants,lieu)  values (?,?,?,?,?,?,?,?,?,?,?)";
+        String req = "Insert into event (nom_event,event_description,event_theme,date_debut,date_fin,event_status,demande_status,id_client,id_type,nbr_participants,lieu,image_event)  values (?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             pst = cnx.prepareStatement(req);
             pst.setString(1, t.getNom_event());
@@ -364,7 +373,7 @@ public class EventService implements IEventService<Event> {
             pst.setInt(9, t.getId_type().getId());
             pst.setInt(10, t.getNbr_participants());
             pst.setString(11, t.getLieu());
-
+            pst.setString(12, t.getImage_event());
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -373,7 +382,7 @@ public class EventService implements IEventService<Event> {
 
     @Override
     public void modifierreservation(Event t, int id) {
-        String req = "update event set nom_event =?,event_description =?,event_theme =?,date_debut =?,date_fin =?,id_type =?,nbr_participants=?,lieu=? where id =? ";
+        String req = "update event set nom_event =?,event_description =?,event_theme =?,date_debut =?,date_fin =?,id_type =?,nbr_participants=?,lieu=?,image_event=? where id =? ";
         try {
             pst = cnx.prepareStatement(req);
             pst.setString(1, t.getNom_event());
@@ -384,7 +393,8 @@ public class EventService implements IEventService<Event> {
             pst.setInt(6, t.getId_type().getId());
             pst.setInt(7, t.getNbr_participants());
             pst.setString(8, t.getLieu());
-            pst.setInt(9, id);
+            pst.setString(9, t.getImage_event());
+            pst.setInt(10, id);
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -430,6 +440,7 @@ public class EventService implements IEventService<Event> {
                 e.setId_type(et);
                 e.setNbr_participants(rs.getInt("e.nbr_participants"));
                 e.setLieu(rs.getString("e.lieu"));
+                e.setImage_event(rs.getString("e.image_event"));
                 list_event.add(e);
             }
         } catch (SQLException ex) {
@@ -458,6 +469,7 @@ public class EventService implements IEventService<Event> {
                 e.setId_type(et);
                 e.setNbr_participants(rs.getInt("e.nbr_participants"));
                 e.setLieu(rs.getString("e.lieu"));
+                e.setImage_event(rs.getString("e.image_event"));
                 list_event.add(e);
             }
         } catch (SQLException ex) {
@@ -489,6 +501,25 @@ public class EventService implements IEventService<Event> {
                 e.setId_type(et);
                 e.setNbr_participants(rs.getInt("e.nbr_participants"));
                 e.setLieu(rs.getString("e.lieu"));
+                e.setImage_event(rs.getString("e.image_event"));
+                list_event.add(e);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list_event;
+    }
+    
+        public List<EventUser> afficherlisteclientparticipant(int id_event) {
+        String req = "select u.* from event_user e join user u on e.id_user=u.id where e.id_event=" + id_event;
+        List<EventUser> list_event = new ArrayList<>();
+        try {
+            ste = cnx.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {
+                User client = new User(rs.getInt("u.id"), rs.getString("u.nom"), rs.getString("u.prenom"), rs.getString("u.login"), rs.getString("u.password"), rs.getString("u.role"));
+                EventUser e = new EventUser();
+                e.setId_user(client);
                 list_event.add(e);
             }
         } catch (SQLException ex) {

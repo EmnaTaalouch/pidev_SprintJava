@@ -25,7 +25,7 @@ public class Event {
     private Event_type id_type;
     private int nbr_participants;
     private String lieu;
-    
+    private String image_event;
     
 
 
@@ -89,6 +89,14 @@ public class Event {
         this.event_status = event_status;
     }
 
+    public String getDemande_status() {
+        return demande_status;
+    }
+
+    public void setDemande_status(String demande_status) {
+        this.demande_status = demande_status;
+    }
+
     public User getId_client() {
         return id_client;
     }
@@ -113,14 +121,6 @@ public class Event {
         this.id_type = id_type;
     }
 
-    public String getDemande_status() {
-        return demande_status;
-    }
-
-    public void setDemande_status(String demande_status) {
-        this.demande_status = demande_status;
-    }
-
     public int getNbr_participants() {
         return nbr_participants;
     }
@@ -137,10 +137,20 @@ public class Event {
         this.lieu = lieu;
     }
 
+    public String getImage_event() {
+        return image_event;
+    }
+
+    public void setImage_event(String image_event) {
+        this.image_event = image_event;
+    }
+
     @Override
     public String toString() {
-        return "Event{" + "id=" + id + ", nom_event=" + nom_event + ", event_description=" + event_description + ", event_theme=" + event_theme + ", date_debut=" + date_debut + ", date_fin=" + date_fin + ", event_status=" + event_status + ", demande_status=" + demande_status + ", id_client=" + id_client + ", id_responsable=" + id_responsable + ", id_type=" + id_type + ", nbr_participants=" + nbr_participants + ", lieu=" + lieu + '}';
+        return "Event{" + "id=" + id + ", nom_event=" + nom_event + ", event_description=" + event_description + ", event_theme=" + event_theme + ", date_debut=" + date_debut + ", date_fin=" + date_fin + ", event_status=" + event_status + ", demande_status=" + demande_status + ", id_client=" + id_client + ", id_responsable=" + id_responsable + ", id_type=" + id_type + ", nbr_participants=" + nbr_participants + ", lieu=" + lieu + ", image_event=" + image_event + '}';
     }
+
+    
     
     
     

@@ -23,6 +23,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +33,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import pidev.Entities.Event;
 import pidev.Services.EventService;
 
@@ -61,23 +67,27 @@ public class ParticiperEventClientController implements Initializable {
 
     }
 
-    HBox cardTemplate(String stringnom, String stringtype, String stringtheme, String stringlieu, String stringdated, String stringdatef, String stringparticipant, int id_event) {
+    HBox cardTemplate(String stringnom, String stringtype, String stringtheme, String stringlieu, String stringdated, String stringdatef, String stringparticipant, String image_event, int id_event) {
         InputStream stream = null;
         HBox mainHbox = new HBox();
         try {
 
             VBox imgbtnVBox = new VBox();
             ImageView img = new ImageView();
-            stream = new FileInputStream("C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava\\src\\Assets\\Images\\event.png");
+            stream = new FileInputStream("C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava\\src\\Assets\\Uploads\\" + image_event);
             Image image = new Image(stream);
             //Creating the image view
             img.setImage(image);
-            img.setFitHeight(150);
-            img.setFitWidth(150);
+            img.setFitHeight(130);
+            img.setFitWidth(130);
             Button btnParticipe = new Button("Participer");
-            btnParticipe.setPrefSize(120, 30);
+            btnParticipe.setPrefSize(130, 30);
             btnParticipe.setStyle("-fx-background-color : pink");
-            
+            /*
+            Button btnParticipeListe = new Button("Liste des Participants");
+            btnParticipeListe.setPrefSize(130, 30);
+            btnParticipeListe.setStyle("-fx-background-color : white");
+             */
             VBox infoVBox = new VBox();
             infoVBox.setSpacing(5);
             Text nomEvent = new Text("Nom Event : " + stringnom);
@@ -91,7 +101,14 @@ public class ParticiperEventClientController implements Initializable {
             Text dateEvent = new Text("De   " + stringdated + "   Jusqu'à   " + stringdatef);
             dateEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20));
             Text nbrPartEvent = new Text("Participants : " + stringparticipant);
-            nbrPartEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 20));
+            nbrPartEvent.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.ITALIC, 20));
+            nbrPartEvent.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    popupListeParticipant(String.valueOf(id_event));
+
+                }
+            });
             infoVBox.getChildren().addAll(nomEvent, typeEvent, themeEvent, lieuEvent, dateEvent, nbrPartEvent);
             btnParticipe.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -99,15 +116,15 @@ public class ParticiperEventClientController implements Initializable {
                     if (es.verifier(1, id_event)) {
                         es.participer(1, id_event);
                         es.decremente(id_event);
-                        es.sendsms("53328112", stringnom,stringdated,stringdatef);
+                        es.sendsms("53328112", stringnom, stringdated, stringdatef);
                         afficherPublicEvent(paneevent);
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION.ERROR);
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Participation");
                         alert.setHeaderText(null);
                         alert.setContentText("vous avez participé a cet evenement");
                         alert.showAndWait();
                     } else {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION.ERROR);
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Participation");
                         alert.setHeaderText(null);
                         alert.setContentText("Oh Oh , Tu as deja participé a cet evenenemet");
@@ -116,6 +133,7 @@ public class ParticiperEventClientController implements Initializable {
 
                 }
             });
+            infoVBox.setPadding(new Insets(0, 0, 0, 20));
             imgbtnVBox.getChildren().addAll(img, btnParticipe);
             mainHbox.getChildren().addAll(imgbtnVBox, infoVBox);
 
@@ -134,9 +152,28 @@ public class ParticiperEventClientController implements Initializable {
     void afficherPublicEvent(VBox v) {
         paneevent.getChildren().clear();
         for (Event t : es.afficherpublicevenement()) {
-            Text diver = new Text(" \n ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- \n");
-            v.getChildren().add(cardTemplate(t.getNom_event(), t.getId_type().getLibelle(), t.getEvent_theme(), t.getLieu(), t.getDate_debut().toString(), t.getDate_fin().toString(), String.valueOf(t.getNbr_participants()), t.getId()));
+            Text diver = new Text(" \n  \n");
+            v.getChildren().add(cardTemplate(t.getNom_event(), t.getId_type().getLibelle(), t.getEvent_theme(), t.getLieu(), t.getDate_debut().toString(), t.getDate_fin().toString(), String.valueOf(t.getNbr_participants()), t.getImage_event(), t.getId()));
             v.getChildren().add(diver);
+        }
+    }
+
+    void popupListeParticipant(String id_event) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("ListeParticipants.fxml"));
+            AnchorPane rootLayout = (AnchorPane) loader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.UTILITY);
+            ListeParticipantsController lpc = loader.getController();
+            lpc.setMainController(this);
+            lpc.setData(id_event);
+            Scene scene = new Scene(rootLayout);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 

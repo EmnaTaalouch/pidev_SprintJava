@@ -6,6 +6,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
@@ -25,7 +26,7 @@
       <Text layoutX="428.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status de l'evenement : " />
       <Text layoutX="56.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client : " />
       <Text layoutX="53.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description de l'evenement :" />
-      <TextArea fx:id="fieldDescription" layoutX="53.0" layoutY="298.0" prefHeight="200.0" prefWidth="691.0" />
+      <TextArea fx:id="fieldDescription" layoutX="53.0" layoutY="298.0" prefHeight="200.0" prefWidth="421.0" />
       <Button fx:id="Modifier" layoutX="502.0" layoutY="538.0" mnemonicParsing="false" onAction="#OnModifier" prefHeight="41.0" prefWidth="104.0" styleClass="updatebtn" text="Modifier" />
       <DatePicker fx:id="fieldDateD" layoutX="206.0" layoutY="132.0" prefHeight="25.0" prefWidth="151.0" />
       <DatePicker fx:id="fieldDateF" layoutX="206.0" layoutY="173.0" prefHeight="25.0" prefWidth="151.0" />
@@ -34,5 +35,9 @@
       <CheckBox fx:id="fieldStatus" layoutX="588.0" layoutY="172.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" text="Publique" />
       <Button fx:id="Supprimer" layoutX="624.0" layoutY="538.0" mnemonicParsing="false" onAction="#OnSupprimer" prefHeight="41.0" prefWidth="104.0" styleClass="deletebtn" text="Supprimer" />
       <Text fx:id="label" layoutX="156.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="75.13671875" />
+      <ComboBox fx:id="fieldType1" layoutX="588.0" layoutY="44.0" prefWidth="150.0" styleClass="textfield" />
+      <Button fx:id="upload" layoutX="588.0" layoutY="228.0" mnemonicParsing="false" onAction="#OnUpload" prefHeight="25.0" prefWidth="77.0" styleClass="menubtn" text="Upload " />
+      <Text layoutX="434.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image :  " />
+      <ImageView fx:id="image" fitHeight="200.0" fitWidth="214.0" layoutX="570.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

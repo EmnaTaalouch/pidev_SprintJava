@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="pidev.GUIController.ListeParticipantsController">
+   <children>
+      <Text fx:id="id_event" layoutX="8.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="37.13671875" />
+      <VBox fx:id="mainvbox" prefHeight="400.0" prefWidth="600.0" />
+   </children>
+</AnchorPane>
