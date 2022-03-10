@@ -3,6 +3,54 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
+package pidev;
+
+import javafx.application.Application;
+import static javafx.application.Application.launch;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+/**
+ *
+ * @author Emna
+ */
+/*
+public class Pidev extends Application {
+    
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+/*
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
+}
+
+
+/*
+
+*/
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package pidev;
 
 import java.sql.Date;
@@ -14,13 +62,16 @@ import pidev.Services.*;
  *
  * @author Emna
  */
+
 public class Pidev {
 
     /**
      * @param args the command line arguments
      */
+
     public static void main(String[] args) {
         // TODO code application logic here
+        /*
         EventService es = new EventService();
         EventTypeService ets = new EventTypeService();
         User u = new User("emna","taalouch","emna.taalouch@esprit.tn","123","client");
@@ -31,19 +82,20 @@ public class Pidev {
         //et2.setLibelle("curie");
         Event_type et4 = new Event_type("emna");
         ets.modifier(et4,2);
+*/
         
         
         
         
         UserCRUD ucd = new UserCRUD();
      //   User u = new User("imen","mettichi","manouu","rr777","admin");
-        User u1 = new User("malek","boughanmi","malek.boughanmi@esprit.tn","kk455","responsable");
+        User u1 = new User(25,"maleeeek","boughanmi","malek.boughanmi@esprit.tn","kk455","responsable");
         User u2 = new User("mariem","mannai","mariem.mannai@esprit.tn","ff888","responsable");
-        ucd.ajouterUser(u);
-        ucd.ajouterUser(u1);
+     //   ucd.ajouterUser(u);
+   //     ucd.ajouterUser(u1);
      //   ucd.ajouterUser(u2);
-        ucd.supprimerUser(21); 
-        ucd.modifierUser(u, 2);
+   //     ucd.supprimerUser(21); 
+        ucd.modifierUser(u1, 25);
         System.out.println(ucd.usersList());
         
         
@@ -59,4 +111,8 @@ public class Pidev {
         
     }
     
-}
+} 
+
+
+
+

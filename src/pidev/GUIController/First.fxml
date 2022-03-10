@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.FirstController">
+   <children>
+      <Text layoutX="65.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Authentification">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Text>
+      <Button fx:id="buttonSignIn" layoutX="243.0" layoutY="147.0" mnemonicParsing="false" onAction="#onSignIn" prefHeight="53.0" prefWidth="114.0" text="se connecter">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="buttonSignUp" layoutX="243.0" layoutY="216.0" mnemonicParsing="false" onAction="#onSignUp" prefHeight="53.0" prefWidth="114.0" text="S'inscrire">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

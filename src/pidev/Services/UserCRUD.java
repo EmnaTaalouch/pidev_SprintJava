@@ -31,8 +31,8 @@ public class UserCRUD implements IUser <User> {
     @Override
     public void ajouterUser(User u) {
         try {
-            String requete="INSERT INTO user (nom,prenom,login,password,role)"+
-                    "VALUES ('"+u.getNom()+"','"+u.getPrenom()+"','"+u.getLogin()+"','"+u.getPassword()+"','"+u.getRole()+"') ";
+            String requete="INSERT INTO user (id,nom,prenom,login,password,role)"+
+                    "VALUES ('"+u.getId()+"','"+u.getNom()+"','"+u.getPrenom()+"','"+u.getLogin()+"','"+u.getPassword()+"','"+u.getRole()+"') ";
             Statement st = cnx.createStatement();
             st.executeUpdate(requete);
             System.out.println("user ajoute!!");
@@ -75,24 +75,48 @@ public class UserCRUD implements IUser <User> {
 
     }
      @Override
-    public void modifierUser(User u,int id) {
+    public void modifierUser(User u,int id)  {
         try {
-            String requete = "update user set nom=?,prenom =?,login =?,password =?,role=? where id =? ";
+            String requete = "update user set nom=?,prenom =?,login =?,password =?,role=? where id='"+id+"'";
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst = cnx.prepareStatement(requete);
             pst.setString(1, u.getNom());
             pst.setString(2, u.getPrenom());
             pst.setString(3, u.getLogin());
             pst.setString(4, u.getPassword());
-            pst.setString(5, u.getRole());
-            pst.setInt(6, id);
+            pst.setString(5, u.getRole());    
             pst.executeUpdate();
+            System.out.println("user modifiee!!");
             
         } 
         catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
+    
+    @Override
+    public void modifierUserPassword(User u)  {
+        try {
+            String requete = "update user set password =? where login='"+u.getLogin()+"'";
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            pst = cnx.prepareStatement(requete);
+            pst.setString(1, u.getPassword());
+            //pst.setString(2, u.getLogin());
+          //  pst.setString(2, u.getPrenom());
+         //   pst.setString(3, u.getLogin());
+          //  pst.setString(2, u.getPassword());
+        //    pst.setString(3, u.getRole());    
+            pst.executeUpdate();
+            System.out.println("password modifiee!!");
+            
+        } 
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    
+    
 
     @Override
     public List<User> usersList() {
@@ -120,5 +144,34 @@ public class UserCRUD implements IUser <User> {
         
 
     }
+    /*
+    public boolean chercherUtilisateurBylogin(String s) {
+        User user = null;
+        String req = "select * from user where nom =?";
+        PreparedStatement preparedStatement;
+        try {
+         preparedStatement = cnx.prepareStatement(req);
+            preparedStatement.setString(1, s);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                  user = new User(
+                        resultSet.getInt("id"),
+                        resultSet.getString("nom"),
+                        resultSet.getString("prenom"),
+                        resultSet.getString("login"),
+                        resultSet.getString("password"),
+                        resultSet.getString("role"));
+                    
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        if (user == null) {
+            return false;
+        }
+        return true;
+    }
+
+    */
     
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.SeConnecterController">
+   <children>
+      <Text layoutX="87.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se Connecter">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Label layoutX="168.0" layoutY="128.0" text="Login" />
+      <Label layoutX="168.0" layoutY="174.0" text="Password" />
+      <TextField fx:id="tf1" layoutX="244.0" layoutY="124.0" prefHeight="25.0" prefWidth="165.0" promptText="entrer votre login" />
+      <PasswordField fx:id="tf2" layoutX="244.0" layoutY="170.0" prefHeight="25.0" prefWidth="165.0" promptText="entrez votre mot de passe" />
+      <Button fx:id="tfSeConnecter" layoutX="359.0" layoutY="301.0" mnemonicParsing="false" onAction="#onSeConnecter" text="se connecter" />
+      <Hyperlink fx:id="Pwd" layoutX="148.0" layoutY="302.0" onAction="#onPwd" text="Mot de passe oublié ?" />
+      <Label fx:id="lblErrors" layoutX="198.0" layoutY="265.0" prefHeight="17.0" prefWidth="224.0" />
+      <Label layoutX="169.0" layoutY="221.0" text="Role" />
+      <ComboBox fx:id="cRole" layoutX="248.0" layoutY="217.0" onAction="#Select" prefHeight="25.0" prefWidth="165.0" promptText="selectionnez votre role" />
+      <Button fx:id="btRetour" layoutX="26.0" layoutY="24.0" mnemonicParsing="false" onAction="#Retour" text="&lt;--Retour" />
+   </children>
+</AnchorPane>

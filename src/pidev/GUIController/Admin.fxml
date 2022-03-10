@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="539.0" prefWidth="761.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="pidev.GUIController.AdminController">
+   <children>
+      <Text layoutX="57.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des utilisateurs">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <TableView fx:id="tabUsers" layoutX="57.0" layoutY="112.0" prefHeight="215.0" prefWidth="452.0">
+        <columns>
+          <TableColumn fx:id="col_id" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="col_nom" prefWidth="75.0" text="nom" />
+            <TableColumn fx:id="col_prenom" prefWidth="75.0" text="prenom" />
+            <TableColumn fx:id="col_login" prefWidth="75.0" text="login" />
+            <TableColumn fx:id="col_password" prefWidth="75.0" text="password" />
+            <TableColumn fx:id="col_role" prefWidth="75.0" text="role" />
+        </columns>
+      </TableView>
+      <Text layoutX="565.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="rechercher par id/role" />
+      <TextField fx:id="rechercher" layoutX="556.0" layoutY="163.0" />
+      <Button fx:id="buttonSupprimer" layoutX="57.0" layoutY="356.0" mnemonicParsing="false" onAction="#onSupprimer" text="supprimer" />
+      <Button fx:id="buttonModifier" layoutX="57.0" layoutY="399.0" mnemonicParsing="false" onAction="#OnModifier" prefHeight="25.0" prefWidth="70.0" text="modifier" />
+      <Label fx:id="idlabel" layoutX="152.0" layoutY="360.0" />
+      <TextField fx:id="tfNom" layoutX="152.0" layoutY="399.0" />
+      <TextField fx:id="tfPrenom" layoutX="328.0" layoutY="399.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="tfLogin" layoutX="498.0" layoutY="399.0" />
+      <TextField fx:id="tfPassword" layoutX="152.0" layoutY="446.0" />
+      <TextField fx:id="tfRole" layoutX="328.0" layoutY="446.0" />
+   </children>
+</AnchorPane>

@@ -16,6 +16,7 @@ public interface IUser <T> {
     public void ajouterUser(T u);
     public void supprimerUser(int id);
     public void modifierUser(T u,int id);
+    public void modifierUserPassword(T u);
     public List<T> usersList();
      
     

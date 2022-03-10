@@ -18,6 +18,12 @@ public class User {
     protected String password;
     protected String role;
 
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+    
+
     public User(String nom, String prenom, String login, String password, String role) {
         this.nom = nom;
         this.prenom = prenom;

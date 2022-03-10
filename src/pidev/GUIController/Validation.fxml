@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ValidationController">
+   <children>
+      <Label layoutX="72.0" layoutY="150.0" text="saisissez votre nouveau mot de passe" />
+      <PasswordField fx:id="pNew" layoutX="306.0" layoutY="155.0" />
+      <Button fx:id="btValider" layoutX="403.0" layoutY="217.0" mnemonicParsing="false" onAction="#onValider" text="valider" />
+      <Label layoutX="72.0" layoutY="103.0" text="saisissez vote login" />
+      <TextField fx:id="tfLogin" layoutX="306.0" layoutY="108.0" />
+   </children>
+</AnchorPane>

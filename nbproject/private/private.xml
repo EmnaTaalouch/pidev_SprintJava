@@ -4,12 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/Services/IUser.java</file>
-            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/Utils/Database.java</file>
-            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/Services/IEventService.java</file>
-            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/Entities/User.java</file>
-            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/Services/EventService.java</file>
-            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/Pidev.java</file>
+            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/Validation.fxml</file>
+            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/MailPassword.java</file>
+            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/Main.java</file>
+            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/Admin.fxml</file>
+            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/SeConnecterController.java</file>
+            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/ValidationController.java</file>
             <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/Services/UserCRUD.java</file>
+            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/NewPasswordController.java</file>
+            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/NewPassword.fxml</file>
+            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/AdminController.java</file>
+            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/SinscrireController.java</file>
+            <file>file:/C:/Users/acer/Documents/GitHub/pidev_SprintJava/src/pidev/GUIController/ControleSaisie.java</file>
         </group>
     </open-files>
 </project-private>
