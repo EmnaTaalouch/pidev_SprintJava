@@ -53,7 +53,7 @@ public class EventService implements IEventService<Event> {
     private Statement ste;
     private ResultSet rs;
     private final static String ACCOUNT_SID = "ACb3d0e0eced06ffd7beec5ff336b6b389";
-    private final static String AUTH_TOKEN = "de3ae4e69215fd0d5935d47a065409f2";
+    private final static String AUTH_TOKEN = "97e5f08e9366f924058e818337714fa9";
 
     public EventService() {
         cnx = Database.getInstance().getConnection();

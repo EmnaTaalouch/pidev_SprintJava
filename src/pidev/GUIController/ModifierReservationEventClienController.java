@@ -155,7 +155,7 @@ public class ModifierReservationEventClienController implements Initializable {
             fieldDateD.setValue(t.getDate_debut().toLocalDate());
             fieldDateF.setValue(t.getDate_fin().toLocalDate());
             fieldType.setValue(t.getId_type());
-            image.setImage(new Image(new FileInputStream("C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava-\\src\\Assets\\Uploads\\"+t.getImage_event())));
+            image.setImage(new Image(new FileInputStream("C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava\\src\\Assets\\Uploads\\"+t.getImage_event())));
             if(t.getEvent_status().equals(EventStatusEnum.Privé.toString())) {
                 btnprivé.setSelected(true);
                 btnpublic.setSelected(false);
@@ -185,7 +185,7 @@ public class ModifierReservationEventClienController implements Initializable {
         }
         else {
             t.setImage_event(listview);
-            String PathTo= "C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava-\\src\\Assets\\Uploads\\"+listview; 
+            String PathTo= "C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava\\src\\Assets\\Uploads\\"+listview; 
             File org=new File(Path);
             File news=new File(PathTo);
             Files.copy(org.toPath(), news.toPath(), StandardCopyOption.REPLACE_EXISTING);

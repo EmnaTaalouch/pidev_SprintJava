@@ -158,7 +158,7 @@ public class ModifierEventResponsableController implements Initializable {
             fieldClient.setValue(t.getId_client());
             fieldType.setValue(t.getId_type());
             System.out.println(t.getImage_event());
-            image.setImage(new Image(new FileInputStream("C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava-\\src\\Assets\\Uploads\\"+t.getImage_event())));
+            image.setImage(new Image(new FileInputStream("C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava\\src\\Assets\\Uploads\\"+t.getImage_event())));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ModifierEventResponsableController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -180,7 +180,7 @@ public class ModifierEventResponsableController implements Initializable {
         }
         else {
             t.setImage_event(listview);
-            String PathTo= "C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava-\\src\\Assets\\Uploads\\"+listview; 
+            String PathTo= "C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava\\src\\Assets\\Uploads\\"+listview; 
             File org=new File(Path);
             File news=new File(PathTo);
             Files.copy(org.toPath(), news.toPath(), StandardCopyOption.REPLACE_EXISTING);

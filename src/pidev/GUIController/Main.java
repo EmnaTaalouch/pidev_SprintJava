@@ -20,7 +20,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Gestion Comptabilite");
-        Parent root = FXMLLoader.load(getClass().getResource("Main_1.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("First.fxml"));
         
         Scene scene = new Scene(root);
         

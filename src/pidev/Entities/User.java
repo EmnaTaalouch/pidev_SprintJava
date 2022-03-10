@@ -17,6 +17,7 @@ public class User {
     protected String login;
     protected String password;
     protected String role;
+    public static User currentUser=null;
 
     public User(String nom, String prenom, String login, String password, String role) {
         this.nom = nom;

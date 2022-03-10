@@ -78,7 +78,8 @@ public class DemandesEventController implements Initializable {
             User responsable = new User();
             responsable.setId(2);
             es.accepterRefuserEvent(DemandeStatusEnum.DemandeAccepted.toString(), responsable.getId(), t.getId());
-            es.sendmail("emna.taalouch.5@gmail.com", "Acceptation de l'event", "votre demande a l evenement " + t.getNom_event() + " a ete acceptée");
+            // t.getId_client().getLogin()
+            es.sendmail("emna.taalouch@esprit.tn", "Acceptation de l'event", "votre demande a l evenement " + t.getNom_event() + " a ete acceptée");
             tabdem.getItems().setAll(es.afficherevenementbydemandestatus(DemandeStatusEnum.DemandePending.toString()));
         }
     }
@@ -90,6 +91,7 @@ public class DemandesEventController implements Initializable {
             User responsable = new User();
             responsable.setId(2);
             es.accepterRefuserEvent(DemandeStatusEnum.DemandeRefused.toString(), responsable.getId(), t.getId());
+            // t.getId_client().getLogin()
             es.sendmail("emna.taalouch@esprit.tn", "Acceptation de l'event", "votre demande a l evenement " + t.getNom_event() + " a ete refusée");
             tabdem.getItems().setAll(es.afficherevenementbydemandestatus(DemandeStatusEnum.DemandePending.toString()));
         }

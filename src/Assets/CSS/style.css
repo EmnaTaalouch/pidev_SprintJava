@@ -195,6 +195,14 @@
     -fx-background-color:#FF7F50;
     -fx-text-fill:#FFF;
 }
+.btnloginregister{
+    -fx-background-color: none;
+    -fx-text-fill:#000;
+}
+.btnloginregister:hover{
+    -fx-background-color:#E3E4E5;
+    -fx-text-fill:#000;
+}
 .text{
     -fx-text-fill:linear-gradient(to top, #87CEFA, 	#000080);
 }

@@ -37,6 +37,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pidev.Entities.Event;
+import pidev.Entities.User;
 import pidev.Services.EventService;
 
 /**
@@ -74,7 +75,7 @@ public class ParticiperEventClientController implements Initializable {
 
             VBox imgbtnVBox = new VBox();
             ImageView img = new ImageView();
-            stream = new FileInputStream("C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava-\\src\\Assets\\Uploads\\" + image_event);
+            stream = new FileInputStream("C:\\Users\\Emna\\Documents\\GitHub\\pidev_SprintJava\\src\\Assets\\Uploads\\" + image_event);
             Image image = new Image(stream);
             //Creating the image view
             img.setImage(image);
@@ -113,8 +114,9 @@ public class ParticiperEventClientController implements Initializable {
             btnParticipe.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    if (es.verifier(1, id_event)) {
-                        es.participer(1, id_event);
+                    if (es.verifier(User.currentUser.getId(), id_event)) {
+                        System.out.println(User.currentUser.getId());
+                        es.participer(User.currentUser.getId(), id_event);
                         es.decremente(id_event);
                         es.sendsms("53328112", stringnom, stringdated, stringdatef);
                         afficherPublicEvent(paneevent);
