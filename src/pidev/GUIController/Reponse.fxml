@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="868.0" prefWidth="1300.0" style="-fx-background-color: white;" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ReponseController">
+   <children>
+      <TextField fx:id="tf_idReclamation" layoutX="241.0" layoutY="92.0" />
+      <TableView fx:id="tv_reclamation" layoutX="241.0" layoutY="54.0" onMouseClicked="#tableClicked" prefHeight="333.0" prefWidth="744.0">
+         <columns>
+            <TableColumn fx:id="col_id" prefWidth="49.60003662109375" text="ID" />
+            <TableColumn fx:id="col_date" prefWidth="99.19989013671875" text="Date" />
+            <TableColumn fx:id="col_desc" prefWidth="187.99993896484375" text="Description" />
+            <TableColumn fx:id="col_image" prefWidth="170.0" text="Image Url" />
+            <TableColumn fx:id="col_clientId" prefWidth="213.0" text="Client(id)" />
+         </columns>
+      </TableView>
+      <Label layoutX="667.0" layoutY="420.0" text="Ajouter une réponse : ">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_ReponseConfirm" layoutX="938.0" layoutY="701.0" mnemonicParsing="false" onMouseClicked="#addReponse" prefHeight="31.0" prefWidth="97.0" style="-fx-background-color: pink;" text="Envoyer" />
+      <TextArea fx:id="ta_reponse" layoutX="673.0" layoutY="462.0" prefHeight="218.0" prefWidth="339.0" />
+      <TableView fx:id="tv_reponse" layoutX="122.0" layoutY="415.0" prefHeight="333.0" prefWidth="339.0">
+         <columns>
+            <TableColumn fx:id="Col_id_Rec" prefWidth="132.79998779296875" text="id_Reclamation" visible="false" />
+            <TableColumn fx:id="col_text" prefWidth="304.0000244140625" text="Reponse" />
+         </columns>
+      </TableView>
+      <Button layoutX="372.0" layoutY="763.0" mnemonicParsing="false" onAction="#btnSupprimer" style="-fx-background-color: red;" text="Supprimer" />
+   </children>
+</AnchorPane>

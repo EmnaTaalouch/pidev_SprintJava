@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="clientinterfacepane" prefHeight="1012.0" prefWidth="2044.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ClientInterfaceController">
+   <children>
+      <BorderPane prefHeight="1012.0" prefWidth="2044.0">
+         <top>
+            <HBox prefHeight="125.0" prefWidth="1299.0" styleClass="topbare" stylesheets="@../../Assets/CSS/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="135.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Assets/Images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="135.0" prefWidth="1164.0" spacing="50.0">
+                     <children>
+                        <Text onMouseClicked="#OnAccueilClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Accueil">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Text>
+                        <Text onMouseClicked="#OnEventClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Evenement">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets bottom="50.0" left="500.0" right="50.0" top="50.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <AnchorPane fx:id="centerpane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

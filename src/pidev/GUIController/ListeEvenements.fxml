@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="849.0" prefWidth="1503.0" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ListeEvenementsController">
+   <children>
+      <TableView fx:id="tabevent" layoutX="31.0" layoutY="116.0" prefHeight="625.0" prefWidth="1418.0">
+        <columns>
+          <TableColumn fx:id="colnom" prefWidth="198.0" text="Nom Evenement" />
+          <TableColumn fx:id="coltype" prefWidth="184.0" text="Type Evenement" />
+            <TableColumn fx:id="colclient" prefWidth="342.0" text="Client" />
+            <TableColumn fx:id="coldated" prefWidth="238.0" text="Date Debut" />
+            <TableColumn fx:id="coldatef" prefWidth="193.0" text="Date Fin" />
+            <TableColumn fx:id="colstatus" prefWidth="262.0" text="Status" />
+        </columns>
+      </TableView>
+      <Button layoutX="1330.0" layoutY="760.0" mnemonicParsing="false" onAction="#OnAjoutEvent" prefHeight="44.0" prefWidth="96.0" styleClass="addbtn" text="Ajouter" />
+      <TextField fx:id="searchfield" layoutX="81.0" layoutY="54.0" prefHeight="44.0" prefWidth="284.0" promptText="chercher evenement . ." />
+      <Button layoutX="1217.0" layoutY="760.0" mnemonicParsing="false" onAction="#OnActualiserEvent" prefHeight="44.0" prefWidth="96.0" styleClass="refreshbtn" text="Actualiser" />
+      <Button layoutX="1322.0" layoutY="49.0" mnemonicParsing="false" onAction="#ExportPdf" prefHeight="44.0" prefWidth="112.0" styleClass="menubtn" text="Export PDF" />
+   </children>
+</AnchorPane>

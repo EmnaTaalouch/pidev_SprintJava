@@ -1,0 +1,205 @@
+.sidebare{
+    -fx-background-color: linear-gradient(to top, #FCCDE9, #FAEBF4);
+}
+.topbare{
+    -fx-background-color: linear-gradient(to left, #FCCDE9, #FAEBF4);
+}
+.text-field {
+    -fx-accent: #007acc;
+    -fx-background-color: #b9b9b9, white;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-background-radius: 0;
+}
+.text-field:focused {
+    -fx-background-color: #007acc, white;
+}
+.loginBtn:collapsed{
+    -fx-background-color:#FFF;
+    -fx-text-fill:#FFF;
+}
+.barre{
+    -fx-background-color: linear-gradient(to top,#EDEDED, #CCCCCC);
+}
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler {   
+    -fx-background-color:#FCCDE9;
+    -fx-stroke: transparent;
+    -fx-size:50;
+    -fx-alignment: CENTER ;    
+    -fx-text-fill: #FFF;
+    -fx-text-alignment: center;
+}
+
+.combo-box-base {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, white;
+    -fx-accent: #007acc;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-background-radius: 0;
+}
+.combo-box-base:focused {
+    -fx-background-color: #007acc, white;
+}
+.table-row-cell:filled:hover {
+
+    -fx-size:50;
+    -fx-alignment: CENTER;
+    -fx-text-fill: #FFF;
+    -fx-text-alignment: center;
+}
+.table-view:row-selection {
+    -fx-background-color: #FAEBF4;
+    -fx-text-fill: white;
+    -fx-fixed-cell-size: 50;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: center;
+}
+
+.check-box .box {
+
+    -fx-background-color: white;
+    -fx-border-color:grey;
+    -fx-border-radius:3px; 
+
+}
+
+.check-box:selected .mark {
+
+    -fx-background-color: white;
+
+}
+
+.check-box:selected .box {
+
+    -fx-background-color: #28a3f4;
+}
+
+.radio-button .radio {
+    -fx-border-width: 1px;
+    -fx-border-color: #28a3f4;
+    -fx-background-color: white;
+    -fx-border-radius: 12px;
+    -fx-padding: 2px;
+}
+.radio-button .radio:selected {
+    -fx-background-color: white;
+}
+.radio-button -radio:armed {
+    -fx-background-color: white;
+}
+.radio-button -radio:determinate {
+    -fx-background-color: white;;
+}
+.radio-button -radio:indeterminate {
+    -fx-background-color: white;
+}
+.radio-button .dot {
+    -fx-background-radius: 15px;
+    -fx-padding: 8px;
+}
+
+* {
+    -fx-primary-color: #007acc;
+    -fx-secondary-color: #4B6EAF;
+    -fx-light-grey-color: #d1d1d1;
+
+    -fx-focus-color: -fx-secondary-color;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: -fx-primary-color;
+    -fx-background-radius: 0;
+}
+.date-picker .arrow-button:hover {
+    -fx-background-color: -fx-secondary-color;
+}
+.date-picker .arrow-button .arrow {
+    -fx-background-color: white;
+}
+.date-picker .cell {
+    -fx-background-color: white;
+}
+.date-picker .cell:hover {
+    -fx-background-color: -fx-light-grey-color;
+}
+.date-picker .cell:focused {
+    -fx-background-color: -fx-light-grey-color;
+}
+.date-picker .selected {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+}
+.date-picker .selected:focused {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+}
+.date-picker-popup  {
+    -fx-border-color: transparent;
+}
+.date-picker-popup .month-year-pane {
+    -fx-background-color: -fx-primary-color;
+}
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: white;
+}
+.date-picker-popup .week-number-cell {
+    -fx-text-fill: -fx-secondary-color;
+}
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+    -fx-background-color: white;
+}
+
+.table-view .table-column{
+    -fx-text-alignment: center;
+    -fx-alignment: CENTER 
+}
+
+.addbtn{
+    -fx-background-color: green;
+    -fx-text-fill:#FFF;
+}
+.addbtn:hover{
+    -fx-background-color: #32CD32;
+    -fx-text-fill:#FFF;
+}
+.refreshbtn{
+    -fx-background-color: grey;
+    -fx-text-fill:#FFF;
+}
+.refreshbtn:hover{
+    -fx-background-color: #CECDCE;
+    -fx-text-fill:#FFF;
+}
+.menubtn{
+    -fx-background-color: indigo;
+    -fx-text-fill:#fff;
+}
+.menubtn:hover{
+    -fx-background-color: #D69AEA;
+    -fx-text-fill:#fff;
+}
+.deletebtn{
+    -fx-background-color: red;
+    -fx-text-fill:#FFF;
+}
+.deletebtn:hover{
+    -fx-background-color: 	#DC143C;
+    -fx-text-fill:#FFF;
+}
+.updatebtn{
+    -fx-background-color: #FF4500;
+    -fx-text-fill:#FFF;
+}
+.updatebtn:hover{
+    -fx-background-color:#FF7F50;
+    -fx-text-fill:#FFF;
+}
+.text{
+    -fx-text-fill:linear-gradient(to top, #87CEFA, 	#000080);
+}
+.pane {
+    -fx-border-color: black;
+    -fx-text-fill:linear-gradient(to top, #ff7f50, #6a5acd);;
+    -fx-background-color: linear-gradient(to top, #ff7f50, #6a5acd);
+}

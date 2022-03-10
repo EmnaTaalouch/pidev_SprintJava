@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="849.0" prefWidth="1503.0" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.DemandesEventController">
+   <children>
+      <TableView fx:id="tabdem" layoutX="25.0" layoutY="92.0" prefHeight="611.0" prefWidth="1440.0">
+        <columns>
+          <TableColumn fx:id="colnom" prefWidth="212.0" text="Nom evenement" />
+          <TableColumn fx:id="coltype" prefWidth="226.0" text="Type evenement" />
+            <TableColumn fx:id="colclient" prefWidth="319.0" text="Client" />
+            <TableColumn fx:id="coldated" prefWidth="127.0" text="Date debut" />
+            <TableColumn fx:id="coldatef" prefWidth="229.0" text="Date fin" />
+            <TableColumn fx:id="colstatus" prefWidth="326.0" text="Status" />
+        </columns>
+      </TableView>
+      <Button layoutX="1193.0" layoutY="744.0" mnemonicParsing="false" onAction="#OnAccepterEvent" prefHeight="48.0" prefWidth="116.0" styleClass="addbtn" text="Accepter" />
+      <Button layoutX="1346.0" layoutY="744.0" mnemonicParsing="false" onAction="#OnRefuserEvent" prefHeight="48.0" prefWidth="116.0" styleClass="deletebtn" text="Refuser" />
+      <TextField fx:id="searchfield" layoutX="54.0" layoutY="40.0" prefHeight="36.0" prefWidth="338.0" promptText="chercher demande . ." />
+   </children>
+</AnchorPane>

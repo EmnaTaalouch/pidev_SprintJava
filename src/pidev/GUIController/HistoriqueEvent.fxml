@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="866.0" prefWidth="1898.0" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.HistoriqueEventController">
+   <children>
+      <TableView fx:id="tablehistorique" layoutX="46.0" layoutY="129.0" prefHeight="609.0" prefWidth="1774.0">
+        <columns>
+          <TableColumn fx:id="nomfield" prefWidth="308.0" text="Nom Evenement" />
+          <TableColumn fx:id="themefield" prefWidth="229.0" text="Theme Evenement" />
+            <TableColumn fx:id="typefield" prefWidth="264.0" text="Type Evenement" />
+            <TableColumn fx:id="datedfield" prefWidth="316.0" text="Date Debut" />
+            <TableColumn fx:id="dateffield" prefWidth="298.0" text="Date Fin" />
+            <TableColumn fx:id="lieufield" prefWidth="358.0" text="Lieu" />
+        </columns>
+      </TableView>
+      <TextField fx:id="searchfield" layoutX="85.0" layoutY="77.0" prefHeight="38.0" prefWidth="299.0" promptText="chercher . ." />
+      <ComboBox fx:id="demandefield" layoutX="1631.0" layoutY="70.0" prefHeight="38.0" prefWidth="169.0" promptText="Demande Status" />
+      <Button fx:id="btnreserver" layoutX="1673.0" layoutY="778.0" mnemonicParsing="false" onAction="#onReserverAction" prefHeight="38.0" prefWidth="127.0" styleClass="addbtn" text="Reserver Evenement" />
+      <Button fx:id="btn" layoutX="1522.0" layoutY="778.0" mnemonicParsing="false" onAction="#onActualiserAction" prefHeight="38.0" prefWidth="127.0" styleClass="refreshbtn" text="Actualiser" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="866.0" prefWidth="1898.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ParticiperEventClientController">
+   <children>
+      <VBox fx:id="paneevent" prefHeight="881.0" prefWidth="1919.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" prefHeight="799.0" prefWidth="1096.0" style="-fx-background-color: white;" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.RelationnelInterfaceController">
+   <children>
+      <Label layoutX="282.0" layoutY="79.0" text="Nom :" />
+      <Label layoutX="268.0" layoutY="121.0" text="Description :" />
+      <Label layoutX="278.0" layoutY="157.0" text="Image :" />
+      <TextField fx:id="nomtxt" layoutX="362.0" layoutY="74.0" promptText="Nom" />
+      <TextField fx:id="desctxt" layoutX="362.0" layoutY="106.0" promptText="Description" />
+      <TextField fx:id="affiche" layoutX="362.0" layoutY="142.0" promptText="Image" />
+      <Button fx:id="uploadbutton" layoutX="559.0" layoutY="191.0" mnemonicParsing="false" onAction="#Uploadfile" style="-fx-background-color: pink;" text="Upload" />
+      <Button layoutX="628.0" layoutY="270.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="31.0" prefWidth="100.0" style="-fx-background-color: green;" text="Ajouter" />
+      <Label layoutX="274.0" layoutY="196.0" text="Categorie :" />
+      <ComboBox fx:id="ComboCategorie" layoutX="372.0" layoutY="191.0" prefWidth="150.0" />
+      <TableView fx:id="tableRelationnel" layoutX="191.0" layoutY="336.0" onMouseClicked="#LoadModif" prefHeight="359.0" prefWidth="717.0">
+        <columns>
+          <TableColumn fx:id="idt" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="nomt" prefWidth="75.0" text="Nom" />
+            <TableColumn fx:id="desct" prefWidth="128.0" text="Description" />
+            <TableColumn fx:id="imaget" prefWidth="126.0" text="Image" />
+            <TableColumn fx:id="categoriet" prefWidth="182.0" text="Categorie" />
+            <TableColumn fx:id="ratingt" prefWidth="103.0" text="Rating" />
+        </columns>
+      </TableView>
+      <Button layoutX="838.0" layoutY="735.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-color: red;" text="Supprimer" />
+      <Button layoutX="760.0" layoutY="270.0" mnemonicParsing="false" onAction="#Modifier" prefHeight="31.0" prefWidth="100.0" style="-fx-background-color: orange;" text="Modifier" />
+      <Label layoutX="216.0" layoutY="301.0" text="Recherche :" />
+      <TextField fx:id="recherche" layoutX="303.0" layoutY="296.0" promptText="Recherche" />
+      <Label fx:id="idlabel" layoutX="155.0" layoutY="100.0" />
+      <Button layoutX="684.0" layoutY="735.0" mnemonicParsing="false" onAction="#PDFbtn" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: pink;" text="PDF" />
+      <Rating fx:id="stars" layoutX="722.0" layoutY="121.0" />
+   </children>
+</AnchorPane>

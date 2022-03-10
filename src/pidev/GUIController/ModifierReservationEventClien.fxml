@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="662.0" prefWidth="835.0" stylesheets="@../../Assets/CSS/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ModifierReservationEventClienController">
+   <children>
+      <TextField fx:id="fieldNom" layoutX="62.0" layoutY="54.0" prefHeight="25.0" prefWidth="231.0" promptText="Nom evenement" />
+      <TextField fx:id="fieldTheme" layoutX="62.0" layoutY="107.0" prefHeight="25.0" prefWidth="231.0" promptText="theme evenement" />
+      <TextField fx:id="fieldNbr" layoutX="438.0" layoutY="107.0" prefHeight="25.0" prefWidth="217.0" promptText="nombre de participants :" />
+      <Text layoutX="68.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de" />
+      <TextField fx:id="fieldLieu" layoutX="441.0" layoutY="170.0" promptText="Lieu" />
+      <Text layoutX="68.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jusqu'à" />
+      <Text layoutX="428.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status de l'evenement : " />
+      <TextArea fx:id="fieldDescription" layoutX="48.0" layoutY="341.0" prefHeight="200.0" prefWidth="443.0" promptText="Description de l'evenement" />
+      <Button fx:id="btnmodif" layoutX="538.0" layoutY="557.0" mnemonicParsing="false" onAction="#OnModifier" prefHeight="41.0" prefWidth="104.0" styleClass="updatebtn" text="Modifier" />
+      <DatePicker fx:id="fieldDateD" layoutX="142.0" layoutY="170.0" prefHeight="25.0" prefWidth="151.0" />
+      <DatePicker fx:id="fieldDateF" layoutX="142.0" layoutY="228.0" prefHeight="25.0" prefWidth="151.0" />
+      <ComboBox fx:id="fieldType" layoutX="438.0" layoutY="54.0" prefHeight="25.0" prefWidth="217.0" promptText="Type de l'evenement" />
+      <Group layoutX="587.0" layoutY="231.0">
+         <children>
+            <RadioButton fx:id="btnprivé" layoutX="-8.0" layoutY="1.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="80.0" text="Privé" />
+            <RadioButton fx:id="btnpublic" layoutX="86.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="91.0" text="Publique" />
+         </children>
+      </Group>
+      <Button fx:id="btnsupp" layoutX="655.0" layoutY="557.0" mnemonicParsing="false" onAction="#Onsupprimer" prefHeight="41.0" prefWidth="104.0" styleClass="deletebtn" text="Supprimer" />
+      <Text fx:id="label" layoutX="131.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="113.13671875" />
+      <Button fx:id="upload" layoutX="637.0" layoutY="292.0" mnemonicParsing="false" onAction="#OnUpload" prefHeight="25.0" prefWidth="77.0" styleClass="menubtn" text="Upload " />
+      <Text layoutX="545.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image :  " />
+      <ImageView fx:id="image" fitHeight="200.0" fitWidth="214.0" layoutX="568.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
