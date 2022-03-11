@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="Comptabilite" prefHeight="790.0" prefWidth="1269.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUIController.ComptabiliteController">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="801.0" prefWidth="1299.0">
+         <left>
+            <VBox prefHeight="608.0" prefWidth="214.0" style="-fx-background-color: #FAEBF4;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="50.0" prefWidth="281.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="74.0" style="-fx-background-color: none;" />
+                        <VBox fx:id="vboxmainevent" prefHeight="200.0" prefWidth="100.0" spacing="13.0">
+                           <children>
+                              <VBox fx:id="vboxanimevent" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                                 <VBox.margin>
+                                    <Insets left="25.0" />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="15.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="42.0" prefWidth="281.0">
+                     <children>
+                        <Button fx:id="btBack" mnemonicParsing="false" onAction="#Back" text="&lt;----" />
+                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="74.0" style="-fx-background-color: none;" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <AnchorPane fx:id="anchorcenter" prefHeight="643.0" prefWidth="1073.0" style="-fx-background-color: white;" stylesheets="@../../Assets/CSS/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <DatePicker fx:id="DateComp" layoutX="400.0" layoutY="52.0" promptText="jj/mm/aaaa" />
+                  <Label layoutX="417.0" layoutY="28.0" text="Date :" />
+                  <ComboBox fx:id="fieldType" layoutX="40.0" layoutY="52.0" prefWidth="150.0" />
+                  <Label layoutX="43.0" layoutY="28.0" text=" Type :" />
+                  <Button fx:id="btAjouter" layoutX="740.0" layoutY="62.0" mnemonicParsing="false" onMouseClicked="#OnAjout" prefHeight="42.0" prefWidth="113.0" style="-fx-background-color: green;" text="Ajouter" />
+                  <Button fx:id="btSupprimer" layoutX="859.0" layoutY="369.0" mnemonicParsing="false" onMouseClicked="#OnSupprimer" prefHeight="45.0" prefWidth="118.0" style="-fx-background-color: red;" text="Supprimer" />
+                  <TableView fx:id="TabComptabilite" layoutX="32.0" layoutY="263.0" onMouseClicked="#LoadModif" prefHeight="285.0" prefWidth="813.0">
+                     <columns>
+                        <TableColumn fx:id="idt" prefWidth="100.0" text="id" />
+                        <TableColumn fx:id="col_Type" prefWidth="107.0" text="Type" />
+                        <TableColumn fx:id="col_Libelle" prefWidth="130.0" text="Libelle" />
+                        <TableColumn fx:id="col_DateComp" prefWidth="151.0" text="Date" />
+                        <TableColumn fx:id="col_Description" prefWidth="282.0" text="Description" />
+                     </columns>
+                  </TableView>
+                  <TextField fx:id="rechercher" layoutX="32.0" layoutY="232.0" promptText="Rechercher" />
+                  <Label layoutX="42.0" layoutY="204.0" text="Rechercher (ID/Type) :" />
+                  <Button layoutX="649.0" layoutY="217.0" mnemonicParsing="false" onAction="#exportexcel" text="Excel" />
+                  <TextField fx:id="tfDescriptionComp" layoutX="400.0" layoutY="137.0" prefHeight="31.0" prefWidth="218.0" promptText="Description ..." />
+                  <TextField fx:id="tfLibelle" layoutX="40.0" layoutY="137.0" promptText="Libelle" />
+                  <Label layoutX="49.0" layoutY="101.0" text="Libelle :" />
+                  <Label layoutX="400.0" layoutY="101.0" text="Description :" />
+                  <Button fx:id="btModifier" layoutX="741.0" layoutY="137.0" mnemonicParsing="false" onMouseClicked="#OnModifier" prefHeight="44.0" prefWidth="111.0" text="Modifier" />
+                  <Label fx:id="idlabel" layoutX="153.0" layoutY="231.0" prefHeight="17.0" prefWidth="129.0" />
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <HBox prefHeight="174.0" prefWidth="1299.0" style="-fx-background-color: #FAEBF4;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="155.0" fitWidth="163.0" pickOnBounds="true" preserveRatio="true" x="51.0">
+                     <image>
+                        <Image url="@../../Assets/Image/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Text onMouseClicked="#onanimateevent" strokeType="INSIDE" strokeWidth="0.0" text="Gestion Comptabilité" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="1056.13671875" x="555.0" y="555.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

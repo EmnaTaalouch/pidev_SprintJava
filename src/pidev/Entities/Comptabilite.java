@@ -5,105 +5,92 @@
  */
 package pidev.Entities;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Calendar;
+
 
 /**
  *
  * @author acer
  */
 public class Comptabilite {
-    private int id_comp;
-    private String libelle_type;
-    private String description_comp;
-    private Date date_comp;
-    private int montant;
-    private User id_responsable;
-    
-    
-    public Comptabilite()
-    {
-        
-    }
-    public Comptabilite(int id_comp,String libelle_type, String description_comp, Date date_comp,User id_responsable, int montant)
-    {
-        this.id_comp=id_comp;
-        this.libelle_type=libelle_type;
-        this.description_comp=description_comp;
-        this.date_comp=date_comp;
-        this.id_responsable = id_responsable;
-        this.montant=montant;
-           
+    private int id;
+    private String libelle;
+    private String description;
+    private java.sql.Date date;
+    private int id_type;
+    private String type;
+
+    public Comptabilite(int id, String libelle, String description, Date date, int id_type) {
+        this.id = id;
+        this.libelle = libelle;
+        this.description = description;
+        this.date = date;
+        this.id_type = id_type;
     }
 
-    public Comptabilite(String libelle_type, String description_comp, Date date_comp,User id_responsable, int montant) {
-        this.libelle_type=libelle_type;
-        this.description_comp=description_comp;
-        this.date_comp=date_comp;
-        this.id_responsable = id_responsable;
-        this.montant=montant;
+    public Comptabilite(String libelle, String description, Date date, int id_type) {
+        this.libelle = libelle;
+        this.description = description;
+        this.date = date;
+        this.id_type = id_type;
     }
 
-    public Comptabilite(int aInt, String string, String string0, java.sql.Date date, int aInt0, User responsable, Comp_type ct) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getId() {
+        return id;
     }
 
-
-  
-    public int getId_comp() {
-        return id_comp;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLibelle() {
-        return libelle_type;
+        return libelle;
     }
 
-    public String getDescription_comp() {
-        return description_comp;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
-    public Date getDate_comp() {
-        return date_comp;
-    }
-    public User getId_responsable() {
-        return id_responsable;
+    public String getDescription() {
+        return description;
     }
 
-     public int getMontant() {
-        return montant;
-    }
-    
-    public void setId_responsable(User id_responsable) {
-        this.id_responsable = id_responsable;
-    }
-   
-
-    public void setId_comp(int id_comp) {
-        this.id_comp = id_comp;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setLibelle(String libelle_type) {
-        this.libelle_type = libelle_type;
+    public Date getDate() {
+        return date;
     }
 
-    public void setDescription_comp(String description_comp) {
-        this.description_comp = description_comp;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public void setDate_comp(Date date_comp) {
-        this.date_comp = date_comp;
-    }
-    public void setMontant(int montant) {
-        this.montant = montant;
+    public int getId_type() {
+        return id_type;
     }
 
+    public void setId_type(int id_type) {
+        this.id_type = id_type;
+    }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     @Override
     public String toString() {
-        return "Comptabilite{" + "id_comp=" + id_comp + ", libelle_type=" + libelle_type + ", description_comp=" + description_comp + ", date_comp=" + date_comp + ", id_responsable=" + id_responsable + ", montant=" + montant +'}';
+        return "Comptabilite{" + "id=" + id + ", libelle=" + libelle + ", description=" + description + ", date=" + date + ", id_type=" + id_type + ", type=" + type + '}';
     }
+
     
-    
-    
+       
     
 }
