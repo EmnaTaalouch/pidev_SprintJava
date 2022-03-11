@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" prefHeight="746.0" prefWidth="1096.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.RelationnelInterfaceController">
+   <children>
+      <Label layoutX="469.0" layoutY="179.0" text="Nom :" />
+      <Label layoutX="466.0" layoutY="210.0" text="Description :" />
+      <Label layoutX="467.0" layoutY="243.0" text="Image :" />
+      <TextField fx:id="nomtxt" layoutX="583.0" layoutY="175.0" promptText="Nom" />
+      <TextField fx:id="desctxt" layoutX="584.0" layoutY="206.0" promptText="Description" />
+      <TextField fx:id="affiche" layoutX="584.0" layoutY="237.0" promptText="Image" />
+      <Button fx:id="uploadbutton" layoutX="701.0" layoutY="237.0" mnemonicParsing="false" onAction="#Uploadfile" text="Upload" />
+      <Button layoutX="608.0" layoutY="336.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+      <Label layoutX="466.0" layoutY="275.0" text="Categorie :" />
+      <ComboBox fx:id="ComboCategorie" layoutX="584.0" layoutY="268.0" prefWidth="150.0" />
+      <TableView fx:id="tableRelationnel" layoutX="217.0" layoutY="435.0" onMouseClicked="#LoadModif" prefHeight="200.0" prefWidth="690.0">
+        <columns>
+          <TableColumn fx:id="idt" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="nomt" prefWidth="75.0" text="Nom" />
+            <TableColumn fx:id="desct" prefWidth="128.0" text="Description" />
+            <TableColumn fx:id="imaget" prefWidth="126.0" text="Image" />
+            <TableColumn fx:id="categoriet" prefWidth="182.0" text="Categorie" />
+            <TableColumn fx:id="ratingt" prefWidth="103.0" text="Rating" />
+        </columns>
+      </TableView>
+      <Button layoutX="771.0" layoutY="652.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
+      <Button layoutX="693.0" layoutY="336.0" mnemonicParsing="false" onAction="#Modifier" text="Modifier" />
+      <Label layoutX="217.0" layoutY="404.0" text="Recherche :" />
+      <TextField fx:id="recherche" layoutX="302.0" layoutY="399.0" promptText="Recherche" />
+      <Label fx:id="idlabel" layoutX="155.0" layoutY="100.0" />
+      <Button layoutX="643.0" layoutY="652.0" mnemonicParsing="false" onAction="#PDFbtn" prefHeight="31.0" prefWidth="89.0" text="PDF" />
+      <Rating fx:id="stars" layoutX="243.0" layoutY="215.0" />
+      <Button fx:id="retourr" layoutX="956.0" layoutY="683.0" mnemonicParsing="false" onAction="#retour" prefHeight="31.0" prefWidth="69.0" text="&lt;---" />
+   </children>
+</AnchorPane>
